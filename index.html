@@ -39,7 +39,7 @@
         
         .top-controls { 
             position: absolute; 
-            top: 10px; /* Von 15px auf 10px verringert */
+            top: 10px; 
             left: 15px; 
             right: 15px; 
             display: flex; 
@@ -60,13 +60,13 @@
         .logo-container { 
             text-align: center; 
             margin-bottom: 0px; 
-            padding-top: 20px; /* Von 30px auf 20px verringert */
+            padding-top: 20px; 
         }
 
         .logo-container img { 
             max-width: 90%; 
             height: auto; 
-            max-height: 65px; 
+            max-height: 65px; /* Bildhöhe bleibt unverändert */
         }
 
         .app-title {
@@ -152,7 +152,7 @@
         }
         
         footer { 
-            margin-top: 25px; 
+            margin-top: 20px; 
             text-align: center; 
             font-size: 0.65em; 
             color: var(--text-gray); 
@@ -215,7 +215,7 @@
     
     <footer>
         <strong>Gröner-Schulze</strong><br>
-        <span id="lbl_footer">V1.0 Multi-Unit & Bluetooth</span><br>
+        <span id="lbl_footer">© 2024-2025 | V1.0 Multi-Unit & Bluetooth</span><br>
         <div style="margin-top: 8px;">
             <a href="https://www.groener-schulze.com/impressum" target="_blank" id="lbl_imp">Impressum</a> | 
             <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank" id="lbl_priv">Datenschutz</a>
@@ -224,21 +224,21 @@
 </div>
 
 <script>
-// JavaScript wie gehabt
+// (JavaScript-Logik bleibt gleich)
 const translations = {
-    de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Impressum", priv: "Datenschutz" },
-    en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Imprint", priv: "Privacy" }
+    de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN" },
+    en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER" }
 };
 
 function changeLang() {
     const l = document.getElementById('langPicker').value;
     const u = document.getElementById('unitPicker').value;
     const unitText = "(" + u + ")";
-    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['de'].D) + " " + unitText;
-    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['de'].d) + " " + unitText;
-    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['de'].s) + " " + unitText;
-    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['de'].res;
-    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['de'].bt;
+    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['en'].D) + " " + unitText;
+    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['en'].d) + " " + unitText;
+    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['en'].s) + " " + unitText;
+    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['en'].res;
+    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['en'].bt;
 }
 
 function calc() {
@@ -252,10 +252,6 @@ function calc() {
         const L = (Math.PI * (Math.pow(D, 2) - Math.pow(d, 2))) / (4000 * s);
         document.getElementById('res').innerText = L.toFixed(2) + " m";
     } else { document.getElementById('res').innerText = "0.00 m"; }
-}
-async function connectBluetooth() {
-    if (!navigator.bluetooth) { alert("Bluetooth nicht unterstützt."); return; }
-    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
 }
 calc();
 </script>
