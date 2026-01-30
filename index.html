@@ -18,32 +18,29 @@
             width: var(--app-width); min-width: var(--app-width); background: var(--brand-navy);
             color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 35px;
             overflow: hidden; display: flex; flex-direction: column; margin: 10px;
-            position: relative; height: 800px;
+            position: relative; height: 820px;
         }
         @media (max-width: 380px) { .app-shell { width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
         
         #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.98); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
-        /* Navigation */
         .top-nav { display: flex; justify-content: space-between; padding: 20px 25px 5px; gap: 10px; }
         select { background: white; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; color: #333; outline: none; cursor: pointer; }
         
         .logo-area { text-align: center; padding: 10px 0 10px; }
-        .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 8px; }
-        .logo-area h1 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 3px 0; font-weight: 700; color: white; }
+        .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 10px; }
+        .logo-area h1 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 5px 0; font-weight: 700; color: white; }
         
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
-        /* Menu Cards */
         .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
         .icon { width: 40px; height: 40px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .card-text h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
         .card-text p { margin: 0; font-size: 0.65rem; color: #64748b; font-weight: 500; }
 
-        /* Compact Buttons */
         .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
         .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 12px; font-weight: 800; font-size: 0.75rem; }
 
@@ -51,18 +48,18 @@
         .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
         input, select.in-view { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
-        /* Schnittbreite Fix */
         input#cut { background: #1a3a5a; color: #ffffff !important; border: 1px solid var(--brand-cyan); }
 
         .res-card { background: white; padding: 15px; border-radius: 20px; text-align: center; margin: 10px 0; color: var(--brand-navy); }
-        .res-num { font-size: 2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-num { font-size: 2.2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
         .res-info { font-size: 0.6rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
 
-        /* Footer Stack Order */
-        footer { text-align: center; padding: 20px; font-size: 0.65rem; color: #94a3b8; margin-top: auto; line-height: 1.4; }
-        footer strong { color: white; display: block; margin-bottom: 4px; font-size: 0.75rem; letter-spacing: 0.5px; }
-        footer .ver-line { display: block; margin-bottom: 8px; opacity: 0.8; }
-        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; font-weight: 600; }
+        /* FIXED FOOTER HIERARCHY */
+        footer { text-align: center; padding: 25px 20px; font-size: 0.65rem; color: #94a3b8; margin-top: auto; display: flex; flex-direction: column; align-items: center; }
+        footer strong { color: white; display: block; margin-bottom: 5px; font-size: 0.75rem; letter-spacing: 0.8px; }
+        footer div.ver { display: block; margin-bottom: 12px; opacity: 0.8; }
+        .footer-links { display: block; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; width: 100%; }
+        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 8px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -96,10 +93,10 @@
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="r_h">Rollen-Meter</h1></div>
         <button class="bt-btn" onclick="alert('BT Search...')"><i data-lucide="bluetooth"></i> <span data-t="bt">Verbinden</span></button>
-        <div class="input-box"><span class="label" data-t="r_d1" data-u>Durchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
-        <div class="input-box"><span class="label" data-t="r_d2" data-u>Kern</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
-        <div class="input-box"><span class="label" data-t="r_s" data-u>Stärke</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
-        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">BERECHNETE LÄNGE</span></div>
+        <div class="input-box"><span class="label" data-t="r_d1" data-u>Rollendurchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
+        <div class="input-box"><span class="label" data-t="r_d2" data-u>Kerndurchmesser</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
+        <div class="input-box"><span class="label" data-t="r_s" data-u>Materialstärke</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
+        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">Berechnete Länge</span></div>
     </div>
 
     <div id="view-nutzen" class="view">
@@ -123,9 +120,9 @@
         <div class="input-box"><span class="label" data-t="mat">Material</span>
             <select id="gMat" class="in-view" onchange="calcG()">
                 <option value="2.7">Alu massiv</option>
-                <option value="1.2">Alu-Verbund (z.B. Dibond)</option>
+                <option value="1.2">Alu-Verbund (Dibond-Style)</option>
                 <option value="1.19">Acryl / PLEXIGLAS®</option>
-                <option value="0.6">PVC Hartschaum (z.B. KömaCell)</option>
+                <option value="0.6">PVC Hartschaum (KömaCell)</option>
                 <option value="7.85">Edelstahl / Stahl</option>
                 <option value="2.5">Glas</option>
                 <option value="0.12">Hohlkammerplatte (PP)</option>
@@ -143,8 +140,8 @@
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="w_h">Windlast-Prüfer</h1></div>
         <div style="display:flex; gap:10px;">
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>B</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>H</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Breite</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Höhe</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
         </div>
         <div class="res-card"><span id="resW" class="res-num">0 N</span><span class="res-info" id="resWkg">Last bei Windstärke 9</span></div>
     </div>
@@ -153,15 +150,15 @@
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="h_h">Hohlsaum-Profi</h1></div>
         <div class="input-box"><span class="label" data-t="h_d" data-u>Stangendurchmesser</span><input type="number" id="hd" value="30" oninput="calcH()"></div>
-        <div class="input-box"><span class="label" data-t="h_s" data-u>Bannerstärke</span><input type="number" id="hs" value="0.5" oninput="calcH()"></div>
+        <div class="input-box"><span class="label" data-t="h_s" data-u>Materialstärke</span><input type="number" id="hs" value="0.5" oninput="calcH()"></div>
         <div class="res-card"><span id="resH" class="res-num">0.0 mm</span><span class="res-info" data-t="h_res">ZUGABE PRO SEITE</span></div>
     </div>
 </div>
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Stärke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter", r_d2: "Core", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Rollendurchmesser", r_d2: "Kerndurchmesser", r_s: "Materialstärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Bannerdicke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
+        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Roll Diameter", r_d2: "Core Diameter", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
     };
     ["fr", "es", "it", "nl", "pl", "da", "no", "ru", "ja"].forEach(l => { if(!i18n[l]) i18n[l] = i18n.en; });
 
@@ -170,7 +167,10 @@
     function updateAllUnits() {
         const u = document.getElementById('uG').value;
         const l = document.getElementById('lG').value;
-        document.querySelectorAll('[data-u]').forEach(el => { el.innerText = `${getT(l, el.getAttribute('data-t'))} (${u})`; });
+        document.querySelectorAll('[data-u]').forEach(el => {
+            const key = el.getAttribute('data-t');
+            el.innerText = `${getT(l, key)} (${u})`;
+        });
         calcN(); calcR(); calcH(); calcG(); calcW();
     }
 
@@ -183,7 +183,7 @@
     function updateFooterLinks(l) {
         document.getElementById('footer-content').innerHTML = `
             <strong>GRÖNER-SCHULZE GMBH</strong>
-            <span class="ver-line">V2.5.3 | 30.01.2026 | © 2026</span>
+            <div class="ver">V2.5.4 | 30.01.2026 | © 2026</div>
             <div class="footer-links">
                 <a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a>
             </div>`;
@@ -206,8 +206,8 @@
     function calcG() {
         let b=parseFloat(document.getElementById('gb').value), h=parseFloat(document.getElementById('gh').value), s=parseFloat(document.getElementById('gs').value), dens=parseFloat(document.getElementById('gMat').value), u=document.getElementById('uG').value;
         if(b&&h&&s) {
-            let res = ((b*h)/1000000) * s * dens;
-            document.getElementById('resG').innerText = (u === 'inc' ? (res*2.204).toFixed(2)+" lbs" : res.toFixed(2)+" kg");
+            let kg = ((b*h)/1000000) * s * dens;
+            document.getElementById('resG').innerText = (u === 'inc' ? (kg*2.204).toFixed(2)+" lbs" : kg.toFixed(2)+" kg");
         }
     }
 
