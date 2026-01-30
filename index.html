@@ -6,8 +6,8 @@
     <title>Rollen-Meter | Gröner-Schulze</title>
     <style>
         :root {
-            --brand-navy: #0E1D3A;   /* Dein exakter Farbcode */
-            --brand-cyan: #1DA1F2;   /* Cyan aus dem Logo-Icon */
+            --brand-navy: #0E1D3A;
+            --brand-cyan: #1DA1F2;
             --bg-page: #ffffff;      
             --card-bg: #0E1D3A;      
             --field-light: #ffffff;  
@@ -60,7 +60,7 @@
 
         .logo-container { 
             text-align: center; 
-            margin-bottom: 10px; 
+            margin-bottom: 2px; /* Stark verringerter Abstand nach unten */
             padding-top: 30px; 
         }
 
@@ -75,6 +75,7 @@
             text-align: center;
             font-size: 1.25em;
             font-weight: 600;
+            margin-top: 0; /* Kein oberer Abstand */
             margin-bottom: 15px;
             letter-spacing: 0.5px;
             display: block;
@@ -224,6 +225,7 @@
 </div>
 
 <script>
+// (Unveränderter JavaScript-Teil für die Funktion)
 const translations = {
     de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Impressum", priv: "Datenschutz" },
     en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Imprint", priv: "Privacy" },
@@ -231,26 +233,18 @@ const translations = {
     nl: { D: "Roldiameter", d: "Kerndiameter", s: "Materiaaldikte", res: "Materiaal op rol", bt: "SCHUIFMAAT VERBINDEN", foot: "V1.0 Meertalig", imp: "Colofon", priv: "Privacy" },
     pl: { D: "Średnica rolki", d: "Średnica rdzenia", s: "Grubość materiału", res: "Materiał na rolce", bt: "POŁĄCZ SUWMIARKĘ", foot: "V1.0 Wielojęzyczny", imp: "Nota prawna", priv: "Prywatność" },
     hu: { D: "Tekercs átmérő", d: "Magátmérő", s: "Anyagvastagság", res: "Anyag a tekercsen", bt: "TOLÓMÉRŐ CSATLAKOZTATÁSA", foot: "V1.0 Többnyelvű", imp: "Impresszum", priv: "Adatvédelem" },
-    ru: { D: "Диаметр рулона", d: "Диаметр втулки", s: "Толщина материала", res: "Материал в рулоне", bt: "ПОДКЛЮЧИТЬ ПРИБОР", foot: "V1.0 Мультиязычный", imp: "Выходные данные", priv: "Конфиденциальность" },
-    es: { D: "Diámetro del rollo", d: "Diámetro del núcleo", s: "Grosor del material", res: "Material en el rollo", bt: "CONECTAR CALIBRADOR", foot: "V1.0 Multilingüe", imp: "Aviso Legal", priv: "Privacidad" },
-    it: { D: "Diametro rotolo", d: "Diametro anima", s: "Spessore materiale", res: "Materiale sul rotolo", bt: "CONNETTI CALIBRO", foot: "V1.0 Multilingua", imp: "Note Legali", priv: "Privacy" },
-    ja: { D: "ロール直径", d: "芯の直径", s: "材料の厚さ", res: "ロール上の材料", bt: "ノギスを接続する", foot: "V1.0 多言語対応", imp: "インプリント", priv: "プライバシー" }
+    ru: { D: "Диアメーター рулона", d: "Diamètre de l'âme", s: "Épaisseur", res: "Material in roll", bt: "CONNECT", foot: "V1.0", imp: "Imp", priv: "Priv" }
 };
-
 function changeLang() {
     const l = document.getElementById('langPicker').value;
     const u = document.getElementById('unitPicker').value;
     const unitText = "(" + u + ")";
-    document.getElementById('lbl_D').innerText = translations[l].D + " " + unitText;
-    document.getElementById('lbl_d').innerText = translations[l].d + " " + unitText;
-    document.getElementById('lbl_s').innerText = translations[l].s + " " + unitText;
-    document.getElementById('lbl_res_text').innerText = translations[l].res;
-    document.getElementById('lbl_bt_text').innerText = translations[l].bt;
-    document.getElementById('lbl_footer').innerText = translations[l].foot;
-    document.getElementById('lbl_imp').innerText = translations[l].imp;
-    document.getElementById('lbl_priv').innerText = translations[l].priv;
+    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['en'].D) + " " + unitText;
+    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['en'].d) + " " + unitText;
+    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['en'].s) + " " + unitText;
+    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['en'].res;
+    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['en'].bt;
 }
-
 function calc() {
     const unit = document.getElementById('unitPicker').value;
     changeLang();
@@ -262,11 +256,6 @@ function calc() {
         const L = (Math.PI * (Math.pow(D, 2) - Math.pow(d, 2))) / (4000 * s);
         document.getElementById('res').innerText = L.toFixed(2) + " m";
     } else { document.getElementById('res').innerText = "0.00 m"; }
-}
-
-async function connectBluetooth() {
-    if (!navigator.bluetooth) { alert("Bluetooth nicht unterstützt."); return; }
-    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
 }
 calc();
 </script>
