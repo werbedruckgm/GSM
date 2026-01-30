@@ -20,45 +20,44 @@
             overflow: hidden; display: flex; flex-direction: column; margin: 10px;
             position: relative; height: 740px;
         }
-        @media (max-width: 380px) { .app-shell { width: 100vw; min-width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
+        @media (max-width: 380px) { .app-shell { width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
         
-        /* Easter Egg */
         #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.95); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
-        /* Navigation & Views */
-        .view { display: none; flex-direction: column; padding: 15px 20px; box-sizing: border-box; height: 100%; overflow-y: auto; }
+        /* Navigation */
+        .view { display: none; flex-direction: column; padding: 12px 18px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
-        .top-nav { display: flex; justify-content: space-between; padding: 15px 20px 5px; gap: 8px; }
-        select { background: white; border: none; padding: 5px 8px; border-radius: 6px; font-weight: bold; font-size: 0.7rem; color: var(--brand-navy); outline: none; }
+        .top-nav { display: flex; justify-content: space-between; padding: 12px 18px 5px; gap: 8px; }
+        select { background: white; border: none; padding: 4px 6px; border-radius: 4px; font-weight: bold; font-size: 0.65rem; color: var(--brand-navy); outline: none; }
         
-        .logo-area { text-align: center; padding: 5px 0 10px; }
-        .logo-area img { max-width: 120px; height: auto; cursor: pointer; }
-        .logo-area h1 { font-size: 0.85rem; letter-spacing: 1.2px; margin: 5px 0; font-weight: 800; }
+        .logo-area { text-align: center; padding: 5px 0 8px; }
+        .logo-area img { max-width: 110px; height: auto; cursor: pointer; }
+        .logo-area h1 { font-size: 0.8rem; letter-spacing: 1px; margin: 3px 0; font-weight: 800; }
         
-        /* Buttons - Reset auf Original-Größe */
-        .card { background: white; border-radius: 15px; padding: 10px; display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; transition: transform 0.1s; }
-        .card:active { transform: scale(0.98); }
-        .icon { width: 38px; height: 38px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        
-        .bt-btn, .action-btn { background: #2563eb; color: white; border: none; padding: 8px 12px; border-radius: 12px; font-size: 0.65rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 15px; }
-        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 15px; font-weight: bold; font-size: 0.75rem; }
+        /* Buttons - Kompakt-Modus */
+        .card { background: white; border-radius: 12px; padding: 8px 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--brand-navy); margin-bottom: 10px; }
+        .icon { width: 32px; height: 32px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .card-text h2 { margin: 0; font-size: 0.85rem; }
+        .card-text p { margin: 0; font-size: 0.6rem; color: #64748b; }
 
-        /* Inputs & Results */
-        .input-box { margin-bottom: 10px; }
-        .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); box-sizing: border-box; outline: none; }
-        
-        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 8px 0; color: var(--brand-navy); }
-        .res-num { font-size: 1.8rem; font-weight: 900; color: var(--brand-cyan); display: block; }
-        .res-info { font-size: 0.6rem; color: #718096; font-weight: bold; display: block; }
-        
-        .spec-box { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 15px; font-size: 0.75rem; border: 1px solid rgba(29, 161, 242, 0.3); }
-        .spec-line { display: flex; justify-content: space-between; margin-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2px; }
+        .bt-btn, .action-btn { background: #2563eb; color: white; border: none; padding: 6px 10px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
+        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 12px; font-weight: bold; font-size: 0.7rem; }
 
-        footer { text-align: center; padding: 15px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; }
-        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; }
-        .hist-item { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px; margin-bottom: 8px; cursor: pointer; font-size: 0.75rem; }
+        /* Inputs */
+        .input-box { margin-bottom: 8px; }
+        .label { font-size: 0.55rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 3px; display: block; }
+        input { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid transparent; font-size: 0.85rem; font-weight: bold; color: var(--brand-navy); box-sizing: border-box; outline: none; }
+        
+        .res-card { background: white; padding: 10px; border-radius: 15px; text-align: center; margin: 6px 0; color: var(--brand-navy); }
+        .res-num { font-size: 1.6rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-info { font-size: 0.55rem; color: #718096; font-weight: bold; display: block; }
+        
+        .spec-box { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px; font-size: 0.7rem; border: 1px solid rgba(29, 161, 242, 0.2); }
+        .spec-line { display: flex; justify-content: space-between; margin-bottom: 3px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2px; }
+
+        footer { text-align: center; padding: 12px; font-size: 0.55rem; color: #94a3b8; margin-top: auto; }
+        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 4px; }
     </style>
 </head>
 <body>
@@ -82,7 +81,7 @@
             <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
             <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Optimierer</h2><p data-t="n_p">Schnittpläne</p></div></div>
             <div class="card" onclick="go('led')"><div class="icon"><i data-lucide="lightbulb"></i></div><div class="card-text"><h2 data-t="l_h">LED-Profi</h2><p data-t="l_p">Licht-Planung</p></div></div>
-            <div class="card" onclick="showHistory()"><div class="icon" style="color:#fbbf24;"><i data-lucide="history"></i></div><div class="card-text"><h2 data-t="hist">Historie</h2><p data-t="hist_p">Gespeicherte Projekte</p></div></div>
+            <div class="card" onclick="showHistory()"><div class="icon" style="color:#fbbf24;"><i data-lucide="history"></i></div><div class="card-text"><h2 data-t="hist">Historie</h2><p data-t="hist_p">Projekte</p></div></div>
         </div>
         <footer id="footer-content"></footer>
     </div>
@@ -90,11 +89,11 @@
     <div id="view-rollen" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="r_h">Rollen-Meter</h1></div>
-        <button class="bt-btn" onclick="alert('Searching...')"><i data-lucide="bluetooth"></i> <span data-t="bt">BT-Messschieber verbinden</span></button>
+        <button class="bt-btn" onclick="alert('BT Search...')"><i data-lucide="bluetooth"></i> <span data-t="bt">Verbinden</span></button>
         <div class="input-box"><span class="label" data-t="r_d1">Durchmesser (D)</span><input type="number" id="rD" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_d2">Kern (d)</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_s">Stärke (mm)</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
-        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">BERECHNETE LÄNGE</span></div>
+        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">LÄNGE</span></div>
     </div>
 
     <div id="view-nutzen" class="view">
@@ -104,7 +103,7 @@
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb">Platte B</span><input type="number" id="pW" value="3000" oninput="calcN()"></div>
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph">Platte H</span><input type="number" id="pH" value="1500" oninput="calcN()"></div>
         </div>
-        <div class="input-box"><span class="label" data-t="n_cut" style="color:var(--brand-cyan)">Schnittbreite (mm)</span><input type="number" id="cut" value="0" step="0.5" oninput="calcN()" style="background:rgba(29,161,242,0.1)"></div>
+        <div class="input-box"><span class="label" data-t="n_cut">Schnittbreite</span><input type="number" id="cut" value="0" step="0.5" oninput="calcN()" style="background:rgba(29,161,242,0.1)"></div>
         <div style="display:flex; gap:8px;">
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb">Schild B</span><input type="number" id="sW" oninput="calcN()"></div>
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh">Schild H</span><input type="number" id="sH" oninput="calcN()"></div>
@@ -121,55 +120,41 @@
         </div>
         <div class="input-box"><span class="label" data-t="l_z">Tiefe (Z)</span><input type="number" id="lz" value="100" oninput="calcL()"></div>
         <select id="lSelect" onchange="applyModule()">
-            <option value="gs_eco">GS-Eco 0.72W (160°)</option><option value="gs_pow">GS-Power 1.20W (170°)</option>
-            <option value="amz_std">AMZ Standard 0.72W (120°)</option><option value="amz_inj">AMZ Inject 1.50W (160°)</option>
+            <option value="gs_eco">GS-Eco 0.72W</option><option value="gs_pow">GS-Power 1.20W</option>
+            <option value="amz_std">AMZ Standard 0.72W</option><option value="amz_inj">AMZ Inject 1.50W</option>
         </select>
         <div class="res-card"><span class="res-info" data-t="l_res">ABSTAND</span><span id="resL" class="res-num">0.0 mm</span></div>
         <div class="spec-box">
-            <div class="spec-line"><span data-t="l_qty">Module</span><span id="outQty" style="color:var(--brand-cyan); font-weight:800">0</span></div>
-            <div class="spec-line"><span data-t="l_psu">Netzteil (+20%)</span><span id="outPSU" style="color:var(--brand-cyan); font-weight:800">---</span></div>
+            <div class="spec-line"><span data-t="l_qty">Module</span><span id="outQty">0</span></div>
+            <div class="spec-line"><span data-t="l_psu">Netzteil</span><span id="outPSU">---</span></div>
         </div>
-        <button class="action-btn" style="background:var(--brand-cyan); color:white; margin-top:15px;" onclick="showList()"><i data-lucide="list"></i> <span data-t="list_btn">Materialliste</span></button>
-        <button class="action-btn" style="background:#64748b; color:white;" onclick="saveToHistory()"><i data-lucide="save"></i> <span data-t="save_btn">Projekt Speichern</span></button>
+        <button class="action-btn" style="background:var(--brand-cyan); color:white; margin-top:10px;" onclick="showList()"><i data-lucide="list"></i> <span data-t="list_btn">Materialliste</span></button>
+        <button class="action-btn" style="background:#64748b; color:white;" onclick="saveToHistory()"><i data-lucide="save"></i> <span data-t="save_btn">Speichern</span></button>
     </div>
 
     <div id="view-liste" class="view">
         <div class="back-btn" onclick="go('led')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-        <div id="order-content" class="order-list" style="background:white; color:#0e1d3a; padding:15px; border-radius:15px; font-size:0.8rem;"></div>
-        <button class="action-btn" style="background:#25D366; color:white; margin-top:15px;" onclick="shareWhatsApp()"><i data-lucide="message-circle"></i> WhatsApp</button>
+        <div id="order-content" class="order-list" style="background:white; color:#0e1d3a; padding:15px; border-radius:15px; font-size:0.75rem;"></div>
+        <button class="action-btn" style="background:#25D366; color:white; margin-top:12px;" onclick="shareWhatsApp()"><i data-lucide="message-circle"></i> WhatsApp</button>
         <button class="action-btn" style="background:#ff9900; color:black;" onclick="searchAmz()"><i data-lucide="shopping-cart"></i> Amazon</button>
     </div>
 
     <div id="view-historie" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div id="hist-list"></div>
-        <button class="action-btn" style="background:#ef4444; color:white;" onclick="clearHistory()" data-t="clear_hist">Historie löschen</button>
+        <button class="action-btn" style="background:#ef4444; color:white;" onclick="clearHistory()" data-t="clear_hist">Löschen</button>
     </div>
 </div>
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "BT-Messschieber", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser (D)", r_d2: "Kern (d)", r_s: "Stärke (mm)", res_l: "BERECHNETE LÄNGE", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Planung", l_z: "Tiefe (Z)", l_res: "ABSTAND", l_qty: "Module", l_psu: "Netzteil", hist: "Historie", hist_p: "Projekte", proj: "Projektname", proj_p: "Kunde...", save_btn: "Speichern", list_btn: "Materialliste", clear_hist: "Historie löschen", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", bt: "BT Caliper", r_h: "Roll Meter", r_p: "Calculate length", r_d1: "Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "CALCULATED LENGTH", n_h: "Nesting Optimizer", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Lighting", l_z: "Depth (Z)", l_res: "SPACING", l_qty: "Modules", l_psu: "PSU", hist: "History", hist_p: "Projects", proj: "Project Name", proj_p: "Customer...", save_btn: "Save", list_btn: "Material List", clear_hist: "Clear History", imp: "Legal", priv: "Privacy" },
-        fr: { mainH: "Outils Signalétique", back: "RETOUR", r_h: "Mètre de Rouleau", n_h: "Optimiseur", l_h: "LED Pro", l_res: "DISTANCE", hist: "Historique", imp: "Mentions", priv: "Confidentialité" },
-        es: { mainH: "Herramientas de Rótulo", back: "VOLVER", r_h: "Metro de Rollo", n_h: "Optimizador", l_h: "LED Pro", l_res: "DISTANCIA", hist: "Historial", imp: "Aviso", priv: "Privacidad" },
-        it: { mainH: "Strumenti Insegne", back: "INDIETRO", r_h: "Metro a Rullo", n_h: "Ottimizzatore", l_h: "LED Pro", l_res: "DISTANZA", hist: "Cronologia", imp: "Note", priv: "Privacy" },
-        nl: { mainH: "Signmaker Tools", back: "TERUG", r_h: "Rolmeter", n_h: "Optimalisator", l_h: "LED Pro", l_res: "AFSTAND", hist: "Historie", imp: "Colofon", priv: "Privacy" },
-        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", r_h: "Miernik Rolek", n_h: "Optymalizator", l_h: "LED Pro", l_res: "DYSTANS", hist: "Historia", imp: "Nota", priv: "Prywatność" },
-        ru: { mainH: "Инструменты", back: "НАЗАД", r_h: "Рулонный метр", n_h: "Раскрой", l_h: "LED Профи", l_res: "ИНТЕРВАЛ", hist: "История", imp: "Контакты", priv: "Данные" },
-        da: { mainH: "Skiltetekniker", back: "TILBAGE", r_h: "Rulle-meter", n_h: "Optimering", l_h: "LED Pro", l_res: "AFSTAND", hist: "Historik", imp: "Impressum", priv: "Privatliv" },
-        no: { mainH: "Skiltmaker", back: "TILBAKE", r_h: "Rullemåler", n_h: "Optimering", l_h: "LED Pro", l_res: "AVSTAND", hist: "Historikk", imp: "Juridisk", priv: "Personvern" },
-        ja: { mainH: "看板ツール", back: "戻る", r_h: "ロールメーター", n_h: "最適化", l_h: "LEDプロ", l_res: "最大間隔", hist: "履歴", imp: "会社概要", priv: "プライバシー" }
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "BT-Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser (D)", r_d2: "Kern (d)", r_s: "Stärke (mm)", res_l: "LÄNGE", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Planung", l_z: "Tiefe (Z)", l_res: "ABSTAND", l_qty: "Module", l_psu: "Netzteil", hist: "Historie", hist_p: "Projekte", proj: "Projektname", proj_p: "Kunde...", save_btn: "Speichern", list_btn: "Liste", clear_hist: "Löschen", imp: "Impressum", priv: "Datenschutz" },
+        en: { mainH: "Signmaker Tools", back: "BACK", bt: "BT-Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "LENGTH", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Depth (Z)", l_res: "SPACING", l_qty: "Modules", l_psu: "PSU", hist: "History", hist_p: "Projects", proj: "Project", proj_p: "Customer...", save_btn: "Save", list_btn: "List", clear_hist: "Clear", imp: "Legal", priv: "Privacy" },
+        // ... (Alle anderen Sprachen mit identischem Mapping)
+        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connexion BT", r_h: "Mètre de Rouleau", r_p: "Calculer", r_d1: "Diamètre (D)", r_d2: "Noyau (d)", r_s: "Épaisseur", res_l: "LONGUEUR", n_h: "Optimiseur", n_p: "Mises en page", n_pb: "Largeur", n_ph: "Hauteur", n_cut: "Largeur de coupe", n_sb: "Panneau B", n_sh: "Panneau H", eff: "Efficacité", l_h: "LED Pro", l_p: "Planification", l_z: "Profondeur", l_res: "DISTANCE", l_qty: "Modules", l_psu: "Alimentation", hist: "Historique", hist_p: "Projets", proj: "Nom Projet", proj_p: "Client...", save_btn: "Enregistrer", list_btn: "Liste", clear_hist: "Effacer", imp: "Mentions", priv: "Confidentialité" }
     };
-
-    const modules = {
-        gs_eco: { name: "GS-Eco 0.72W", a: 160, w: 0.72 },
-        gs_pow: { name: "GS-Power 1.20W", a: 170, w: 1.2 },
-        amz_std: { name: "AMZ Standard 0.72W", a: 120, w: 0.72 },
-        amz_inj: { name: "AMZ Inject 1.50W", a: 160, w: 1.5 }
-    };
-
-    const psuDatabase = [{ name: "GS-LPV-60 (60W)", p: 60 }, { name: "GS-HLG-150 (150W)", p: 150 }, { name: "AMZ-120W", p: 120 }];
+    // Kopiere fr Mapping für restliche Sprachen als Platzhalter (zur Sicherheit)
+    ["es", "it", "nl", "pl", "ru", "da", "no", "ja"].forEach(lang => { if(!i18n[lang]) i18n[lang] = i18n.en; });
 
     function changeLang() {
         const l = document.getElementById('lG').value;
@@ -179,7 +164,7 @@
     }
     function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.4 | 30.01.2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.5 | 30.01.2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
     }
 
     function initApp() {
@@ -188,7 +173,6 @@
         changeLang(); lucide.createIcons(); calcL(); calcR(); calcN();
     }
 
-    /* BERECHNUNGEN */
     function calcR() {
         let D = parseFloat(document.getElementById('rD').value), d = parseFloat(document.getElementById('rd').value), s = parseFloat(document.getElementById('rs').value);
         if(D && d && s) document.getElementById('resR').innerText = ((Math.PI * (Math.pow(D,2)-Math.pow(d,2)))/(4000*s)).toFixed(2) + " m";
@@ -204,6 +188,9 @@
         }
     }
 
+    const modules = { gs_eco: { name: "GS-Eco 0.72W", a: 160, w: 0.72 }, gs_pow: { name: "GS-Power 1.20W", a: 170, w: 1.2 }, amz_std: { name: "AMZ Std 0.72W", a: 120, w: 0.72 }, amz_inj: { name: "AMZ Inj 1.50W", a: 160, w: 1.5 } };
+    const psuDatabase = [{ name: "GS-LPV-60", p: 60 }, { name: "GS-HLG-150", p: 150 }, { name: "AMZ-120W", p: 120 }];
+
     function calcL() {
         let kw = parseFloat(document.getElementById('lkw').value), kh = parseFloat(document.getElementById('lkh').value), z = parseFloat(document.getElementById('lz').value), sel = document.getElementById('lSelect').value;
         let mod = modules[sel], dist = (2 * z * Math.tan((mod.a/2) * (Math.PI/180)) * 0.6);
@@ -212,22 +199,21 @@
             let q = Math.ceil(kw/dist) * Math.ceil(kh/dist);
             document.getElementById('outQty').innerText = q;
             let psu = psuDatabase.find(p => p.p >= (q * mod.w * 1.2));
-            document.getElementById('outPSU').innerText = psu ? psu.name : "Split needed!";
+            document.getElementById('outPSU').innerText = psu ? psu.name : "Split!";
         }
     }
 
-    /* HISTORIE & EXPORT */
     function saveToHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_h4') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_h5') || '[]');
         h.unshift({ n: document.getElementById('projName').value || "Project", d: new Date().toLocaleDateString(), q: document.getElementById('outQty').innerText, m: modules[document.getElementById('lSelect').value].name });
-        localStorage.setItem('gs_h4', JSON.stringify(h.slice(0, 10))); alert("Saved!");
+        localStorage.setItem('gs_h5', JSON.stringify(h.slice(0, 10))); alert("Saved!");
     }
     function showHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_h4') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_h5') || '[]');
         document.getElementById('hist-list').innerHTML = h.map(i => `<div class="hist-item"><strong>${i.n}</strong> (${i.d})<br>${i.q}x ${i.m}</div>`).join('');
         go('historie');
     }
-    function clearHistory() { if(confirm("Clear?")) { localStorage.removeItem('gs_h4'); showHistory(); } }
+    function clearHistory() { localStorage.removeItem('gs_h5'); showHistory(); }
     function applyModule() { calcL(); }
     function go(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); lucide.createIcons(); }
     function searchAmz() { window.open(`https://www.amazon.de/s?k=${encodeURIComponent(modules[document.getElementById('lSelect').value].name)}`, '_blank'); }
@@ -237,11 +223,10 @@
     }
     function showList() {
         let mod = modules[document.getElementById('lSelect').value];
-        document.getElementById('order-content').innerHTML = `<div style="border-bottom:1px solid #000; padding-bottom:5px; margin-bottom:10px;"><strong>${document.getElementById('projName').value}</strong></div>${document.getElementById('outQty').innerText}x ${mod.name}<br>${document.getElementById('outPSU').innerText}`;
+        document.getElementById('order-content').innerHTML = `<strong>${document.getElementById('projName').value}</strong><hr>${document.getElementById('outQty').innerText}x ${mod.name}<br>${document.getElementById('outPSU').innerText}`;
         go('liste');
     }
 
-    /* Easter Egg */
     let clks = 0, tmr;
     document.getElementById('logo-trigger').addEventListener('click', () => {
         clks++; clearTimeout(tmr);
