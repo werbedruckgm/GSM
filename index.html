@@ -18,51 +18,51 @@
             width: var(--app-width); min-width: var(--app-width); background: var(--brand-navy);
             color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 35px;
             overflow: hidden; display: flex; flex-direction: column; 
-            height: 100vh; max-height: 100vh; /* Füllt den Screen ohne Scrollen */
+            height: 100vh; max-height: 100vh;
         }
         @media (max-width: 380px) { .app-shell { width: 100vw; min-width: 100vw; border-radius: 0; } }
         
         #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.98); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
-        /* Auswahlboxen tiefer und kompakt */
-        .top-nav { display: flex; justify-content: space-between; padding: 40px 25px 5px; gap: 10px; }
-        select { background: white; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.7rem; color: #333; outline: none; cursor: pointer; }
+        /* Kompakter Header */
+        .top-nav { display: flex; justify-content: space-between; padding: 35px 25px 0px; gap: 10px; }
+        select { background: white; border: none; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.65rem; color: #333; outline: none; cursor: pointer; }
         
-        .logo-area { text-align: center; padding: 5px 0; }
-        .logo-area img { max-width: 110px; height: auto; cursor: pointer; margin-bottom: 5px; }
-        .logo-area h1 { font-size: 0.95rem; letter-spacing: 0.5px; margin: 0; font-weight: 700; color: white; }
+        .logo-area { text-align: center; padding: 0px 0 5px; }
+        .logo-area img { max-width: 90px; height: auto; cursor: pointer; margin-bottom: 2px; }
+        .logo-area h1 { font-size: 0.85rem; letter-spacing: 0.5px; margin: 0; font-weight: 700; color: white; }
         
-        .view { display: none; flex-direction: column; padding: 10px 20px; box-sizing: border-box; height: 100%; overflow-y: auto; }
+        .view { display: none; flex-direction: column; padding: 5px 20px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
-        /* Karten Layout für 100% Sichtbarkeit */
-        .card { background: white; border-radius: 18px; padding: 10px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--brand-navy); margin-bottom: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.1s; }
-        .card:active { transform: scale(0.97); }
-        .icon { width: 36px; height: 36px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .card-text h2 { margin: 0; font-size: 0.9rem; font-weight: 700; }
-        .card-text p { margin: 0; font-size: 0.6rem; color: #64748b; font-weight: 500; }
+        /* Maximale Kompaktheit der Karten */
+        .card { background: white; border-radius: 15px; padding: 8px 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--brand-navy); margin-bottom: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.1s; }
+        .card:active { transform: scale(0.98); }
+        .icon { width: 32px; height: 32px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon i { width: 18px; height: 18px; }
+        .card-text h2 { margin: 0; font-size: 0.85rem; font-weight: 700; }
+        .card-text p { margin: 0; font-size: 0.55rem; color: #64748b; font-weight: 500; }
 
-        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 8px; }
-        .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 10px; font-weight: 800; font-size: 0.75rem; }
+        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 8px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 6px; }
+        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 8px; font-weight: 800; font-size: 0.7rem; }
 
-        .input-box { margin-bottom: 8px; }
-        .label { font-size: 0.55rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 3px; display: block; }
-        input, select.in-view { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid transparent; font-size: 0.85rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
+        .input-box { margin-bottom: 6px; }
+        .label { font-size: 0.55rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 2px; display: block; }
+        input, select.in-view { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid transparent; font-size: 0.8rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
-        /* Schnittbreite Kontrast-Fix */
         input#cut { background: #1a3a5a; color: #ffffff !important; border: 1px solid var(--brand-cyan); }
 
-        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 8px 0; color: var(--brand-navy); }
-        .res-num { font-size: 1.8rem; font-weight: 900; color: var(--brand-cyan); display: block; }
-        .res-info { font-size: 0.55rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
+        .res-card { background: white; padding: 10px; border-radius: 15px; text-align: center; margin: 5px 0; color: var(--brand-navy); }
+        .res-num { font-size: 1.6rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-info { font-size: 0.5rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
 
-        /* FOOTER VERTICAL STACK FIX */
-        footer { text-align: center; padding: 10px 20px 20px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 2px !important; }
-        footer strong { color: white; display: block !important; font-size: 0.7rem; letter-spacing: 0.8px; width: 100%; }
-        footer .ver-info { display: block !important; margin-bottom: 5px; opacity: 0.8; width: 100%; }
-        .footer-links { display: block !important; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
-        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        /* FOOTER DIREKT UNTER DEN BUTTONS OHNE GAP */
+        footer { text-align: center; padding: 5px 20px 20px; font-size: 0.55rem; color: #94a3b8; margin-top: 5px; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 2px !important; }
+        footer strong { color: white; display: block !important; font-size: 0.7rem; letter-spacing: 0.5px; width: 100%; }
+        footer .ver-info { display: block !important; margin-bottom: 4px; opacity: 0.7; width: 100%; }
+        .footer-links { display: block !important; width: 100%; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4px; }
+        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 6px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -95,7 +95,6 @@
     <div id="view-rollen" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="r_h">Rollen-Meter</h1></div>
-        <button class="bt-btn" onclick="alert('BT Search...')"><i data-lucide="bluetooth"></i> <span data-t="bt">Verbinden</span></button>
         <div class="input-box"><span class="label" data-t="r_d1" data-u>Durchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_d2" data-u>Kern</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_s" data-u>Stärke</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
@@ -186,7 +185,7 @@
     function updateFooterLinks(l) {
         document.getElementById('footer-content').innerHTML = `
             <strong>GRÖNER-SCHULZE GMBH</strong>
-            <div class="ver-info">V2.5.8 | 30.01.2026 | © 2026</div>
+            <div class="ver-info">V2.5.9 | 30.01.2026 | © 2026</div>
             <div class="footer-links">
                 <a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a>
             </div>`;
