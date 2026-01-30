@@ -12,55 +12,56 @@
         html, body { 
             height: 100%; margin: 0; padding: 0; background: var(--bg-page); 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex; justify-content: center; align-items: center; 
+            display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
         .app-shell {
             width: var(--app-width); min-width: var(--app-width); background: var(--brand-navy);
             color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 35px;
-            overflow: hidden; display: flex; flex-direction: column; margin: 10px;
-            position: relative; height: 820px;
+            overflow: hidden; display: flex; flex-direction: column; 
+            height: 100vh; max-height: 100vh; /* Füllt den Screen ohne Scrollen */
         }
-        @media (max-width: 380px) { .app-shell { width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
+        @media (max-width: 380px) { .app-shell { width: 100vw; min-width: 100vw; border-radius: 0; } }
         
         #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.98); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
-        /* Auswahlboxen tiefer setzen */
-        .top-nav { display: flex; justify-content: space-between; padding: 50px 25px 10px; gap: 10px; }
-        select { background: white; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; color: #333; outline: none; cursor: pointer; }
+        /* Auswahlboxen tiefer und kompakt */
+        .top-nav { display: flex; justify-content: space-between; padding: 40px 25px 5px; gap: 10px; }
+        select { background: white; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.7rem; color: #333; outline: none; cursor: pointer; }
         
-        .logo-area { text-align: center; padding: 5px 0 10px; }
-        .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 10px; }
-        .logo-area h1 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 5px 0; font-weight: 700; color: white; }
+        .logo-area { text-align: center; padding: 5px 0; }
+        .logo-area img { max-width: 110px; height: auto; cursor: pointer; margin-bottom: 5px; }
+        .logo-area h1 { font-size: 0.95rem; letter-spacing: 0.5px; margin: 0; font-weight: 700; color: white; }
         
-        .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
+        .view { display: none; flex-direction: column; padding: 10px 20px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
-        /* Karten Layout */
-        .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
+        /* Karten Layout für 100% Sichtbarkeit */
+        .card { background: white; border-radius: 18px; padding: 10px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--brand-navy); margin-bottom: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
-        .icon { width: 40px; height: 40px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .card-text h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
-        .card-text p { margin: 0; font-size: 0.65rem; color: #64748b; font-weight: 500; }
+        .icon { width: 36px; height: 36px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .card-text h2 { margin: 0; font-size: 0.9rem; font-weight: 700; }
+        .card-text p { margin: 0; font-size: 0.6rem; color: #64748b; font-weight: 500; }
 
-        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
-        .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 12px; font-weight: 800; font-size: 0.75rem; }
+        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 8px; }
+        .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 10px; font-weight: 800; font-size: 0.75rem; }
 
-        .input-box { margin-bottom: 10px; }
-        .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        input, select.in-view { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
+        .input-box { margin-bottom: 8px; }
+        .label { font-size: 0.55rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 3px; display: block; }
+        input, select.in-view { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid transparent; font-size: 0.85rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
+        /* Schnittbreite Kontrast-Fix */
         input#cut { background: #1a3a5a; color: #ffffff !important; border: 1px solid var(--brand-cyan); }
 
-        .res-card { background: white; padding: 15px; border-radius: 20px; text-align: center; margin: 10px 0; color: var(--brand-navy); }
-        .res-num { font-size: 2.2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
-        .res-info { font-size: 0.6rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
+        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 8px 0; color: var(--brand-navy); }
+        .res-num { font-size: 1.8rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-info { font-size: 0.55rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
 
-        /* FOOTER VERTICAL STACK & GAP REMOVAL */
-        footer { text-align: center; padding: 10px 20px 25px; font-size: 0.65rem; color: #94a3b8; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 2px !important; margin-top: 5px; }
-        footer strong { color: white; display: block !important; font-size: 0.75rem; letter-spacing: 0.8px; width: 100%; }
-        footer .ver-info { display: block !important; margin-bottom: 8px; opacity: 0.8; width: 100%; }
-        .footer-links { display: block !important; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; }
+        /* FOOTER VERTICAL STACK FIX */
+        footer { text-align: center; padding: 10px 20px 20px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 2px !important; }
+        footer strong { color: white; display: block !important; font-size: 0.7rem; letter-spacing: 0.8px; width: 100%; }
+        footer .ver-info { display: block !important; margin-bottom: 5px; opacity: 0.8; width: 100%; }
+        .footer-links { display: block !important; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 8px; font-weight: 600; }
     </style>
 </head>
@@ -83,8 +84,8 @@
         <div class="logo-area"><img src="GS-Logo.jpg" id="logo-trigger" alt="GS"><h1 data-t="mainH">Werbetechniker-Tools</h1></div>
         <div class="menu-list">
             <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
-            <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Rechner</h2><p data-t="n_p">Schnittpläne & Verschnitt</p></div></div>
-            <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht prüfen</p></div></div>
+            <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Rechner</h2><p data-t="n_p">Schnittpläne</p></div></div>
+            <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht</p></div></div>
             <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik & Sicherheit</p></div></div>
             <div class="card" onclick="go('hohl')"><div class="icon"><i data-lucide="maximize"></i></div><div class="card-text"><h2 data-t="h_h">Hohlsaum-Profi</h2><p data-t="h_p">Banner-Zulage</p></div></div>
         </div>
@@ -104,12 +105,12 @@
     <div id="view-nutzen" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="n_h">Nutzen-Rechner</h1></div>
-        <div style="display:flex; gap:10px;">
+        <div style="display:flex; gap:8px;">
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Platte B</span><input type="number" id="pW" value="3000" oninput="calcN()"></div>
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Platte H</span><input type="number" id="pH" value="1500" oninput="calcN()"></div>
         </div>
         <div class="input-box"><span class="label" data-t="n_cut" data-u>Schnittbreite</span><input type="number" id="cut" value="1.5" step="0.1" oninput="calcN()"></div>
-        <div style="display:flex; gap:10px;">
+        <div style="display:flex; gap:8px;">
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb" data-u>Schild B</span><input type="number" id="sW" oninput="calcN()"></div>
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh" data-u>Schild H</span><input type="number" id="sH" oninput="calcN()"></div>
         </div>
@@ -130,7 +131,7 @@
                 <option value="0.12">Hohlkammerplatte (PP)</option>
             </select>
         </div>
-        <div style="display:flex; gap:10px;">
+        <div style="display:flex; gap:8px;">
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Breite</span><input type="number" id="gb" value="1000" oninput="calcG()"></div>
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Höhe</span><input type="number" id="gh" value="1000" oninput="calcG()"></div>
         </div>
@@ -141,7 +142,7 @@
     <div id="view-wind" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="w_h">Windlast-Prüfer</h1></div>
-        <div style="display:flex; gap:10px;">
+        <div style="display:flex; gap:8px;">
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Breite</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Höhe</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
         </div>
@@ -152,14 +153,14 @@
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="h_h">Hohlsaum-Profi</h1></div>
         <div class="input-box"><span class="label" data-t="h_d" data-u>Stangendurchmesser</span><input type="number" id="hd" value="30" oninput="calcH()"></div>
-        <div class="input-box"><span class="label" data-t="h_s" data-u>Bannerdicke</span><input type="number" id="hs" value="0.5" oninput="calcH()"></div>
+        <div class="input-box"><span class="label" data-t="h_s" data-u>Materialstärke</span><input type="number" id="hs" value="0.5" oninput="calcH()"></div>
         <div class="res-card"><span id="resH" class="res-num">0.0 mm</span><span class="res-info" data-t="h_res">ZUGABE PRO SEITE</span></div>
     </div>
 </div>
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Materialstärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Bannerdicke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Materialstärke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
         en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter", r_d2: "Core", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
     };
     ["fr", "es", "it", "nl", "pl", "da", "no", "ru", "ja"].forEach(l => { if(!i18n[l]) i18n[l] = i18n.en; });
@@ -170,7 +171,8 @@
         const u = document.getElementById('uG').value;
         const l = document.getElementById('lG').value;
         document.querySelectorAll('[data-u]').forEach(el => {
-            el.innerText = `${getT(l, el.getAttribute('data-t'))} (${u})`;
+            const key = el.getAttribute('data-t');
+            el.innerText = `${getT(l, key)} (${u})`;
         });
         calcN(); calcR(); calcH(); calcG(); calcW();
     }
@@ -184,7 +186,7 @@
     function updateFooterLinks(l) {
         document.getElementById('footer-content').innerHTML = `
             <strong>GRÖNER-SCHULZE GMBH</strong>
-            <div class="ver-info">V2.5.7 | 30.01.2026 | © 2026</div>
+            <div class="ver-info">V2.5.8 | 30.01.2026 | © 2026</div>
             <div class="footer-links">
                 <a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a>
             </div>`;
