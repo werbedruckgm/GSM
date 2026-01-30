@@ -35,13 +35,15 @@
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
+        /* Menu Cards (Screenshot 1 Look) */
         .card { background: white; border-radius: 20px; padding: 14px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
         .icon { width: 44px; height: 44px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .card-text h2 { margin: 0; font-size: 1rem; font-weight: 700; }
         .card-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 500; }
 
-        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
+        /* Compact Buttons */
+        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
         .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 15px; font-weight: 800; font-size: 0.75rem; }
 
         .input-box { margin-bottom: 10px; }
@@ -50,9 +52,9 @@
         /* Standard Inputs */
         input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.95rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
-        /* Spezielle Korrektur für Schnittbreite: Weisse Zahl auf Cyan */
-        input#cut { background: var(--brand-cyan); color: white !important; border: 1px solid white; }
-        input#cut::placeholder { color: rgba(255,255,255,0.7); }
+        /* FIX: Schnittbreite Lesbarkeit (Weiß auf Dunkelblau/Cyan Mix) */
+        input#cut { background: rgba(255, 255, 255, 0.15); color: white !important; border: 1px solid var(--brand-cyan); }
+        input#cut:focus { background: rgba(255, 255, 255, 0.25); }
 
         .res-card { background: white; padding: 15px; border-radius: 20px; text-align: center; margin: 10px 0; color: var(--brand-navy); }
         .res-num { font-size: 2.2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
@@ -62,8 +64,6 @@
         footer strong { color: white; display: block; margin-bottom: 4px; }
         .footer-links { margin-top: 8px; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; }
-
-        .hist-item { background: rgba(255,255,255,0.1); padding: 12px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -126,7 +126,7 @@
         </div>
         <div class="input-box">
             <span class="label" data-t="n_cut">Schnittbreite / Fräser (mm)</span>
-            <input type="number" id="cut" value="0" step="0.5" oninput="calcN()">
+            <input type="number" id="cut" value="1.5" step="0.1" oninput="calcN()">
         </div>
         <div style="display:flex; gap:10px;">
             <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb">Schild B</span><input type="number" id="sW" placeholder="600" oninput="calcN()"></div>
@@ -156,10 +156,15 @@
         de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Rollendurchmesser (D)", r_d2: "Kerndurchmesser (d)", r_s: "Stärke (mm)", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne & Verschnitt", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite (mm)", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Abstände & Ausleuchtung", l_z: "Kastentiefe (Z)", l_res: "Max. Abstand", hist: "Historie", hist_p: "Gespeicherte Projekte", proj: "Projektname", proj_p: "Kunde / Auftrag", save_btn: "Speichern", clear_hist: "Verlauf löschen", imp: "Impressum", priv: "Datenschutz" },
         en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate length", r_d1: "Roll Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "Calculated length", n_h: "Nesting Optimizer", n_p: "Layout & Waste", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width (mm)", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Spacing & Lighting", l_z: "Depth (Z)", l_res: "Max. Spacing", hist: "History", hist_p: "Saved Projects", proj: "Project Name", proj_p: "Customer...", save_btn: "Save", clear_hist: "Clear History", imp: "Legal Notice", priv: "Privacy" },
         ru: { mainH: "Инструменты", back: "НАЗАД", bt: "Подключить", r_h: "Рулонный метр", r_p: "Рассчитать длину", r_d1: "Диаметр рулона (D)", r_d2: "Диаметр втулки (d)", r_s: "Толщина (мм)", res_l: "Рассчитанная длина", n_h: "Раскрой", n_p: "Макет и отходы", n_pb: "Лист Ширина", n_ph: "Лист Высота", n_cut: "Ширина реза (мм)", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эффективность", l_h: "LED Профи", l_p: "Интервал и свет", l_z: "Глубина (Z)", l_res: "Макс. интервал", hist: "История", hist_p: "Сохраненные проекты", proj: "Название проекта", proj_p: "Клиент...", save_btn: "Сохранить", clear_hist: "Очистить историю", imp: "Контакты", priv: "Данные" },
-        ja: { mainH: "看板製作ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "長さを計算する", r_d1: "ロール直径 (D)", r_d2: "芯の直径 (d)", r_s: "厚み (mm)", res_l: "計算された長さ", n_h: "ネスティング", n_p: "レイアウトと廃棄物", n_pb: "プレート幅", n_ph: "プレート高さ", n_cut: "カット幅 (mm)", n_sb: "サイン幅", n_sh: "サイン高さ", eff: "効率", l_h: "LEDプロ", l_p: "間隔と照明", l_z: "ボックスの深さ (Z)", l_res: "最大間隔", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト名", proj_p: "顧客...", save_btn: "保存", clear_hist: "履歴を削除", imp: "会社概要", priv: "プライバシー" }
-        // (Weitere Sprachen wie FR, ES, IT, NL, PL, DA, NO sind identisch strukturiert hinterlegt)
+        ja: { mainH: "看板製作ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "長さを計算する", r_d1: "ロール直径 (D)", r_d2: "芯の直径 (d)", r_s: "厚み (mm)", res_l: "計算された長さ", n_h: "ネスティング", n_p: "レイアウトと廃棄物", n_pb: "プレート幅", n_ph: "プレート高さ", n_cut: "カット幅 (mm)", n_sb: "サイン幅", n_sh: "サイン高さ", eff: "効率", l_h: "LEDプロ", l_p: "間隔と照明", l_z: "ボックスの深さ (Z)", l_res: "最大間隔", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト名", proj_p: "顧客...", save_btn: "保存", clear_hist: "履歴を削除", imp: "会社概要", priv: "プライバシー" },
+        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connecter", r_h: "Mètre Rouleau", r_p: "Calculer", n_h: "Optimiseur", l_h: "LED Pro", l_res: "Distance Max", hist: "Historique", imp: "Mentions", priv: "Confidentialité" },
+        es: { mainH: "Herramientas Rótulo", back: "VOLVER", bt: "Conectar", r_h: "Metro Rollo", r_p: "Calcular", n_h: "Optimización", l_h: "LED Pro", l_res: "Distancia Max", hist: "Historial", imp: "Aviso", priv: "Privacidad" },
+        it: { mainH: "Strumenti Insegne", back: "INDIETRO", bt: "Connetti", r_h: "Metro Rullo", r_p: "Calcola", n_h: "Ottimizzazione", l_h: "LED Pro", l_res: "Distanza Max", hist: "Cronologia", imp: "Note", priv: "Privacy" },
+        nl: { mainH: "Signmaker Tools", back: "TERUG", bt: "Verbinden", r_h: "Rolmeter", r_p: "Berekenen", n_h: "Optimalisatie", l_h: "LED Pro", l_res: "Afstand Max", hist: "Historie", imp: "Colofon", priv: "Privacy" },
+        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", bt: "Połącz", r_h: "Miernik Rolek", r_p: "Oblicz", n_h: "Optymalizator", l_h: "LED Pro", l_res: "Dystans Max", hist: "Historia", imp: "Nota", priv: "Prywatność" },
+        da: { mainH: "Skiltetekniker", back: "TILBAGE", bt: "Forbind", r_h: "Rulle-meter", r_p: "Beregn", n_h: "Optimering", l_h: "LED Pro", l_res: "Afstand Max", hist: "Historik", imp: "Impressum", priv: "Privatliv" },
+        no: { mainH: "Skiltmaker", back: "TILBAKE", bt: "Koble til", r_h: "Rullemåler", r_p: "Beregn", n_h: "Optimering", l_h: "LED Pro", l_res: "Avstand Max", hist: "Historikk", imp: "Juridisk", priv: "Personvern" }
     };
-    ["fr", "es", "it", "nl", "pl", "da", "no"].forEach(lang => { if(!i18n[lang]) i18n[lang] = i18n.en; });
 
     function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
 
@@ -169,11 +174,11 @@
         document.querySelectorAll('[data-p]').forEach(el => { el.placeholder = getT(l, el.getAttribute('data-p')); });
         updateFooterLinks(l);
         calcN(); calcR(); calcL();
-        lucide.createIcons(); // Fix für verschwindende Icons
+        lucide.createIcons(); // Fix für verschwindende Icons bei Sprachwechsel
     }
 
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.3.1 | 30.01.2026 | © 2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.3.2 | 30.01.2026 | © 2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
     }
 
     function initApp() {
