@@ -25,7 +25,6 @@
         #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.98); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
-        /* Navigation dropdowns */
         .top-nav { display: flex; justify-content: space-between; padding: 20px 25px 5px; gap: 10px; }
         select { background: white; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.7rem; color: #333; outline: none; }
         
@@ -33,21 +32,20 @@
         .logo-area img { max-width: 140px; height: auto; cursor: pointer; margin-bottom: 10px; }
         .logo-area h1 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 5px 0; font-weight: 700; color: white; }
         
-        /* Layout Views */
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
-        /* Cards (Look from Screenshot) */
-        .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        /* Cards (Screenshot Look) */
+        .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.1s; }
+        .card:active { transform: scale(0.97); }
         .icon { width: 38px; height: 38px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .card-text h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
         .card-text p { margin: 0; font-size: 0.65rem; color: #64748b; font-weight: 500; }
 
-        /* Buttons (Kompaktierung wie gewünscht) */
+        /* Buttons (Kompakt) */
         .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 10px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 8px; }
         .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 12px; font-weight: 800; font-size: 0.75rem; }
 
-        /* Inputs */
         .input-box { margin-bottom: 10px; }
         .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 3px; display: block; }
         input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); box-sizing: border-box; outline: none; }
@@ -59,8 +57,6 @@
         footer { text-align: center; padding: 15px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; }
         footer strong { color: white; display: block; margin-bottom: 4px; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; }
-
-        .hist-item { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -79,10 +75,7 @@
     </div>
 
     <div id="main" class="view active">
-        <div class="logo-area">
-            <img src="GS-Logo.jpg" id="logo-trigger">
-            <h1 data-t="mainH">Werbetechniker-Tools</h1>
-        </div>
+        <div class="logo-area"><img src="GS-Logo.jpg" id="logo-trigger"><h1 data-t="mainH">Werbetechniker-Tools</h1></div>
         <div class="menu-list">
             <div class="card" onclick="go('rollen')">
                 <div class="icon"><i data-lucide="ruler"></i></div>
@@ -111,7 +104,7 @@
         <div class="input-box"><span class="label" data-t="r_d1">Durchmesser (D)</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_d2">Kern (d)</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_s">Stärke (mm)</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
-        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">Berechnete Länge</span></div>
+        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">LÄNGE</span></div>
     </div>
 
     <div id="view-nutzen" class="view">
@@ -123,15 +116,15 @@
         </div>
         <div class="input-box"><span class="label" data-t="n_cut">Schnittbreite</span><input type="number" id="cut" value="0" step="0.5" oninput="calcN()" style="background:rgba(29,161,242,0.1)"></div>
         <div style="display:flex; gap:10px;">
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb">Schild B</span><input type="number" id="sW" oninput="calcN()"></div>
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh">Schild H</span><input type="number" id="sH" oninput="calcN()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb">Schild B</span><input type="number" id="sW" placeholder="600" oninput="calcN()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh">Schild H</span><input type="number" id="sH" placeholder="400" oninput="calcN()"></div>
         </div>
         <div class="res-card"><span id="resN" class="res-num">0</span><span id="resE" class="res-info" data-t="eff">Effizienz: 0%</span></div>
     </div>
 
     <div id="view-led" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-        <div class="logo-area"><h1>LED-Rechner</h1></div>
+        <div class="logo-area"><h1>LED-Profi</h1></div>
         <div class="input-box"><span class="label" data-t="proj">Projektname</span><input type="text" id="projName" data-p="proj_p"></div>
         <div class="input-box"><span class="label" data-t="l_z">Kastentiefe (Z)</span><input type="number" id="lz" value="100" oninput="calcL()"></div>
         <select id="lSelect" onchange="calcL()" style="margin-bottom:10px; width:100%; border-radius:8px; padding:8px;">
@@ -144,23 +137,23 @@
     <div id="view-historie" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div id="hist-list"></div>
-        <button class="action-btn" style="background:#ef4444; color:white;" onclick="clearHistory()" data-t="clear_hist">Verlauf löschen</button>
+        <button class="action-btn" style="background:#ef4444; color:white;" onclick="clearHistory()" data-t="clear_hist">Löschen</button>
     </div>
 </div>
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser (D)", r_d2: "Kern (d)", r_s: "Stärke (mm)", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Planung", l_z: "Kastentiefe (Z)", l_res: "Max. Abstand", hist: "Historie", hist_p: "Projekte", proj: "Projektname", proj_p: "Kunde...", save_btn: "Speichern", clear_hist: "Löschen", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "Calculated length", n_h: "Nesting", n_p: "Layouts", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Depth (Z)", l_res: "Max. Spacing", hist: "History", hist_p: "Projects", proj: "Project Name", proj_p: "Customer...", save_btn: "Save", clear_hist: "Clear", imp: "Legal Notice", priv: "Privacy" },
-        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connecter", r_h: "Mètre Rouleau", r_p: "Calculer", r_d1: "Diamètre", r_d2: "Noyau", r_s: "Épaisseur", res_l: "Longueur", n_h: "Optimiseur", n_p: "Mises en page", n_pb: "Plaque L", n_ph: "Plaque H", n_cut: "Coupe", n_sb: "Panneau L", n_sh: "Panneau H", eff: "Efficacité", l_h: "LED Pro", l_p: "Plan", l_z: "Profondeur", l_res: "Distance", hist: "Historique", hist_p: "Projets", proj: "Nom", proj_p: "Client...", save_btn: "Sauver", clear_hist: "Effacer", imp: "Mentions", priv: "Privatité" },
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser (D)", r_d2: "Kern (d)", r_s: "Stärke (mm)", res_l: "Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Planung", l_z: "Tiefe (Z)", l_res: "Abstand", hist: "Historie", hist_p: "Projekte", proj: "Projektname", proj_p: "Kunde...", save_btn: "Speichern", clear_hist: "Löschen", imp: "Impressum", priv: "Datenschutz" },
+        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Depth (Z)", l_res: "Spacing", hist: "History", hist_p: "Projects", proj: "Project", proj_p: "Customer...", save_btn: "Save", clear_hist: "Clear", imp: "Legal", priv: "Privacy" },
+        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connexion", r_h: "Mètre de Rouleau", r_p: "Calculer", r_d1: "Diamètre (D)", r_d2: "Noyau (d)", r_s: "Épaisseur", res_l: "Longueur", n_h: "Optimiseur", n_p: "Mises en page", n_pb: "Plaque L", n_ph: "Plaque H", n_cut: "Coupe", n_sb: "Panneau L", n_sh: "Panneau H", eff: "Efficacité", l_h: "LED Pro", l_p: "Plan", l_z: "Profondeur", l_res: "Distance", hist: "Historique", hist_p: "Projets", proj: "Nom Projet", proj_p: "Client...", save_btn: "Enregistrer", clear_hist: "Effacer", imp: "Mentions", priv: "Confidentialité" },
         es: { mainH: "Herramientas Rótulo", back: "VOLVER", bt: "Conectar", r_h: "Metro Rollo", r_p: "Calcular", r_d1: "Diámetro", r_d2: "Núcleo", r_s: "Espesor", res_l: "Longitud", n_h: "Optimización", n_p: "Diseños", n_pb: "Placa A", n_ph: "Placa H", n_cut: "Corte", n_sb: "Cartel A", n_sh: "Cartel H", eff: "Eficiencia", l_h: "LED Pro", l_p: "Plan", l_z: "Profundidad", l_res: "Distancia", hist: "Historial", hist_p: "Proyectos", proj: "Proyecto", proj_p: "Cliente...", save_btn: "Guardar", clear_hist: "Borrar", imp: "Aviso", priv: "Privacidad" },
-        it: { mainH: "Strumenti Insegne", back: "INDIETRO", bt: "Connetti", r_h: "Metro Rullo", r_p: "Calcola", r_d1: "Diametro", r_d2: "Anima", r_s: "Spessore", res_l: "Lunghezza", n_h: "Ottimizzazione", n_p: "Layout", n_pb: "Lastra L", n_ph: "Lastra H", n_cut: "Taglio", n_sb: "Insegna L", n_sh: "Insegna H", eff: "Efficienza", l_h: "LED Pro", l_p: "Piano", l_z: "Profondità", l_res: "Distanza", hist: "Cronologia", hist_p: "Progetti", proj: "Progetto", proj_p: "Cliente...", save_btn: "Salva", clear_hist: "Cancella", imp: "Note", priv: "Privacy" },
-        nl: { mainH: "Signmaker Tools", back: "TERUG", bt: "Verbinden", r_h: "Rolmeter", r_p: "Berekenen", r_d1: "Diameter", r_d2: "Kern", r_s: "Dikte", res_l: "Lengte", n_h: "Optimalisatie", n_p: "Layouts", n_pb: "Plaat B", n_ph: "Plaat H", n_cut: "Snijbreedte", n_sb: "Bord B", n_sh: "Bord H", eff: "Efficiëntie", l_h: "LED Pro", l_p: "Planning", l_z: "Diepte", l_res: "Afstand", hist: "Historie", hist_p: "Projecten", proj: "Project", proj_p: "Klant...", save_btn: "Opslaan", clear_hist: "Wissen", imp: "Colofon", priv: "Privacy" },
-        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", bt: "Połącz", r_h: "Miernik Rolek", r_p: "Oblicz", r_d1: "Średnica", r_d2: "Rdzeń", r_s: "Grubość", res_l: "Długość", n_h: "Optymalizator", n_p: "Układy", n_pb: "Płyta S", n_ph: "Płyta W", n_cut: "Szer. cięcia", n_sb: "Szyld S", n_sh: "Szyld W", eff: "Wydajność", l_h: "LED Pro", l_p: "Plan", l_z: "Głębokość", l_res: "Dystans", hist: "Historia", hist_p: "Projekty", proj: "Projekt", proj_p: "Klient...", save_btn: "Zapisz", clear_hist: "Usuń", imp: "Nota", priv: "Prywatność" },
-        ru: { mainH: "Инструменты", back: "НАЗАД", bt: "Связь", r_h: "Рулонный метр", r_p: "Расчет", r_d1: "Диаметр", r_d2: "Втулка", r_s: "Толщина", res_l: "Длина", n_h: "Раскрой", n_p: "Макеты", n_pb: "Лист Ш", n_ph: "Лист В", n_cut: "Рез", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эффект.", l_h: "LED Профи", l_p: "План", l_z: "Глубина", l_res: "Интервал", hist: "История", hist_p: "Проекты", proj: "Проект", proj_p: "Клиент...", save_btn: "Сохранить", clear_hist: "Удалить", imp: "Контакty", priv: "Данные" },
+        it: { mainH: "Strumenti Insegne", back: "INDIETRO", bt: "Connetti", r_h: "Metro Rullo", r_p: "Calcola", r_d1: "Diametro", r_d2: "Anima", r_s: "Spessore", res_l: "Lunghezza", n_h: "Ottimizzazione", n_p: "Layout", n_pb: "Lastra L", n_ph: "Lastra H", n_cut: "Taglio", n_sb: "Insegna L", n_sh: "Insegna H", eff: "Efficienza", l_h: "LED Pro", l_p: "Pianifica", l_z: "Profondità", l_res: "Distanza", hist: "Cronologia", hist_p: "Progetti", proj: "Progetto", proj_p: "Cliente...", save_btn: "Salva", clear_hist: "Cancella", imp: "Note", priv: "Privacy" },
+        nl: { mainH: "Signmaker Tools", back: "TERUG", bt: "Verbinden", r_h: "Rolmeter", r_p: "Berekenen", r_d1: "Diameter", r_d2: "Kern", r_s: "Dikte", res_l: "Lengte", n_h: "Optimalisatie", n_p: "Layouts", n_pb: "Plaat B", n_ph: "Plaat H", n_cut: "Snijbreedte", n_sb: "Bord B", n_sh: "Bord H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Diepte", l_res: "Afstand", hist: "Historie", hist_p: "Projecten", proj: "Project", proj_p: "Klant...", save_btn: "Opslaan", clear_hist: "Wissen", imp: "Colofon", priv: "Privacy" },
+        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", bt: "Połącz", r_h: "Miernik Rolek", r_p: "Oblicz", r_d1: "Średnica", r_d2: "Rdzeń", r_s: "Grubość", res_l: "Długość", n_h: "Optymalizator", n_p: "Układy", n_pb: "Płyta S", n_ph: "Płyta W", n_cut: "Szer. cięcia", n_sb: "Szyld S", n_sh: "Szyld W", eff: "Wydajność", l_h: "LED Pro", l_p: "Planowanie", l_z: "Głębokość", l_res: "Dystans", hist: "Historia", hist_p: "Projekty", proj: "Projekt", proj_p: "Klient...", save_btn: "Zapisz", clear_hist: "Usuń", imp: "Nota", priv: "Prywatność" },
+        ru: { mainH: "Инструменты", back: "НАЗАД", bt: "Связь", r_h: "Рулонный метр", r_p: "Расчет", r_d1: "Диаметр", r_d2: "Втулка", r_s: "Толщина", res_l: "Длина", n_h: "Раскрой", n_p: "Макеты", n_pb: "Лист Ш", n_ph: "Лист В", n_cut: "Рез", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эффект.", l_h: "LED Профи", l_p: "План", l_z: "Глубина", l_res: "Интервал", hist: "История", hist_p: "Проекты", proj: "Проект", proj_p: "Клиент...", save_btn: "Сохранить", clear_hist: "Удалить", imp: "Контакты", priv: "Данные" },
         da: { mainH: "Skiltetekniker", back: "TILBAGE", bt: "Forbind", r_h: "Rulle-meter", r_p: "Beregn", r_d1: "Diameter", r_d2: "Kerne", r_s: "Tykkelse", res_l: "Længde", n_h: "Optimering", n_p: "Layouts", n_pb: "Plade B", n_ph: "Plade H", n_cut: "Skærebredde", n_sb: "Skilt B", n_sh: "Skilt H", eff: "Effektivitet", l_h: "LED Pro", l_p: "Plan", l_z: "Dybde", l_res: "Afstand", hist: "Historik", hist_p: "Projekter", proj: "Projekt", proj_p: "Kunde...", save_btn: "Gem", clear_hist: "Slet", imp: "Impressum", priv: "Privatliv" },
         no: { mainH: "Skiltmaker", back: "TILBAKE", bt: "Koble til", r_h: "Rullemåler", r_p: "Beregn", r_d1: "Diameter", r_d2: "Kjerne", r_s: "Tykkelse", res_l: "Lengde", n_h: "Optimering", n_p: "Layouts", n_pb: "Plate B", n_ph: "Plate H", n_cut: "Skjærebredde", n_sb: "Skilt B", n_sh: "Skilt H", eff: "Effektivitet", l_h: "LED Pro", l_p: "Plan", l_z: "Dybde", l_res: "Avstand", hist: "Historikk", hist_p: "Prosjekter", proj: "Prosjekt", proj_p: "Kunde...", save_btn: "Lagre", clear_hist: "Slett", imp: "Juridisk", priv: "Personvern" },
-        ja: { mainH: "看板ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "計算", r_d1: "直径", r_d2: "芯", r_s: "厚み", res_l: "長さ", n_h: "最適化", n_p: "配置", n_pb: "幅", n_ph: "高さ", n_cut: "カット幅", n_sb: "幅 B", n_sh: "高さ H", eff: "効率", l_h: "LEDプロ", l_p: "計画", l_z: "深さ", l_res: "間隔", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト名", proj_p: "顧客...", save_btn: "保存", clear_hist: "削除", imp: "会社概要", priv: "個人情報" }
+        ja: { mainH: "看板ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "計算", r_d1: "直径", r_d2: "芯", r_s: "厚み", res_l: "長さ", n_h: "最適化", n_p: "配置", n_pb: "幅", n_ph: "高さ", n_cut: "カット幅", n_sb: "幅 B", n_sh: "高さ H", eff: "効率", l_h: "LEDプロ", l_p: "計画", l_z: "深さ", l_res: "間隔", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト名", proj_p: "顧客...", save_btn: "保存", clear_hist: "削除", imp: "会社概要", priv: "プライバシー" }
     };
 
     function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
@@ -174,16 +167,9 @@
     }
 
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.8 | 30.01.2026 | © 2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.9 | 30.01.2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
     }
 
-    function initApp() {
-        const browserLang = navigator.language.split('-')[0];
-        document.getElementById('lG').value = i18n[browserLang] ? browserLang : 'en';
-        changeLang(); lucide.createIcons();
-    }
-
-    /* TOOLS LOGIC (RESTORED) */
     function calcR() {
         let D=parseFloat(document.getElementById('rD').value), d=parseFloat(document.getElementById('rd').value), s=parseFloat(document.getElementById('rs').value);
         if(D&&d&&s) document.getElementById('resR').innerText = ((Math.PI*(Math.pow(D,2)-Math.pow(d,2)))/(4000*s)).toFixed(2) + " m";
@@ -203,22 +189,27 @@
         if(z) document.getElementById('resL').innerText = (2*z*Math.tan((a/2)*(Math.PI/180))*0.6).toFixed(1) + " mm";
     }
 
-    /* HISTORY */
     function saveToHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_h_v228') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_h_v229') || '[]');
         h.unshift({ n: document.getElementById('projName').value || "Project", d: new Date().toLocaleDateString(), v: document.getElementById('resL').innerText });
-        localStorage.setItem('gs_h_v228', JSON.stringify(h.slice(0, 10))); alert("Saved!");
+        localStorage.setItem('gs_h_v229', JSON.stringify(h.slice(0, 10))); alert("Saved!");
     }
+    
     function showHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_h_v228') || '[]');
-        document.getElementById('hist-list').innerHTML = h.map(i => `<div class="hist-item"><strong>${i.n}</strong><br><small>${i.d} - ${i.v}</small></div>`).join('');
+        let h = JSON.parse(localStorage.getItem('gs_h_v229') || '[]');
+        document.getElementById('hist-list').innerHTML = h.length ? h.map(i => `<div class="hist-item"><strong>${i.n}</strong><br><small>${i.d} - ${i.v}</small></div>`).join('') : "<p style='text-align:center; opacity:0.5;'>Empty</p>";
         go('historie');
     }
-    function clearHistory() { localStorage.removeItem('gs_h_v228'); showHistory(); }
 
+    function clearHistory() { localStorage.removeItem('gs_h_v229'); showHistory(); }
     function go(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); lucide.createIcons(); }
 
-    /* Easter Egg */
+    function initApp() {
+        const browserLang = navigator.language.split('-')[0];
+        document.getElementById('lG').value = i18n[browserLang] ? browserLang : 'en';
+        changeLang(); lucide.createIcons();
+    }
+
     let clks = 0, tmr;
     document.getElementById('logo-trigger').addEventListener('click', () => {
         clks++; clearTimeout(tmr);
