@@ -10,59 +10,59 @@
             --brand-navy: #0E1D3A; 
             --brand-navy-light: #162a50;
             --brand-cyan: #1DA1F2; 
-            --app-width: 360px;
+            --app-width: 330px; /* Schmaler für den echten App-Look */
         }
         html, body { 
             height: 100%; margin: 0; padding: 0; background: #000; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
+        /* Schlanke App-Shell */
         .app-shell {
-            width: var(--app-width); height: 100vh; max-height: 100vh;
+            width: var(--app-width); height: 96vh; max-height: 800px;
             background: radial-gradient(circle at top, var(--brand-navy-light) 0%, var(--brand-navy) 100%);
             color: white; display: flex; flex-direction: column; overflow: hidden;
-            position: relative;
+            border-radius: 40px; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
-        @media (max-width: 380px) { .app-shell { width: 100vw; } }
+        @media (max-width: 380px) { .app-shell { width: 92vw; height: 98vh; } }
 
-        /* Top Nav & Logo Proportions */
-        .top-nav { display: flex; justify-content: space-between; padding: 40px 25px 5px; }
-        select { background: white; border: none; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.7rem; color: var(--brand-navy); outline: none; }
+        /* Navigation & Logo */
+        .top-nav { display: flex; justify-content: space-between; padding: 35px 20px 5px; }
+        select { background: white; border: none; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.65rem; color: var(--brand-navy); outline: none; }
         
         .logo-area { text-align: center; padding: 5px 0; }
-        .logo-area img { max-width: 100px; height: auto; }
-        .logo-area h1 { font-size: 0.9rem; letter-spacing: 0.8px; margin: 2px 0; font-weight: 800; text-transform: uppercase; }
+        .logo-area img { max-width: 90px; height: auto; }
+        .logo-area h1 { font-size: 0.85rem; letter-spacing: 0.8px; margin: 2px 0; font-weight: 800; text-transform: uppercase; }
         
-        .view { display: none; flex-direction: column; padding: 5px 20px; flex: 1; overflow-y: auto; }
+        .view { display: none; flex-direction: column; padding: 5px 15px; flex: 1; overflow-y: auto; }
         .view.active { display: flex; }
         
-        /* Card Proportions based on Screenshot V2.1.5 */
-        .card { background: white; border-radius: 20px; padding: 10px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--brand-navy); margin-bottom: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.1s; }
+        /* Karten Proportionen exakt nach V2.1.5 */
+        .card { background: white; border-radius: 18px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--brand-navy); margin-bottom: 7px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
-        .icon { width: 36px; height: 36px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .icon i { width: 18px; height: 18px; }
-        .card-text h2 { margin: 0; font-size: 0.9rem; font-weight: 800; }
-        .card-text p { margin: 0; font-size: 0.6rem; color: #64748b; font-weight: 600; }
+        .icon { width: 34px; height: 34px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon i { width: 16px; height: 16px; }
+        .card-text h2 { margin: 0; font-size: 0.85rem; font-weight: 800; }
+        .card-text p { margin: 0; font-size: 0.55rem; color: #64748b; font-weight: 600; }
 
-        /* Form Elements */
-        .input-box { margin-bottom: 8px; }
-        .label { font-size: 0.55rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 2px; display: block; }
-        input, select.in-view { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid transparent; font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); background: white; outline: none; box-sizing: border-box; }
+        /* Forms */
+        .input-box { margin-bottom: 6px; }
+        .label { font-size: 0.5rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 2px; display: block; }
+        input, select.in-view { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid transparent; font-size: 0.8rem; font-weight: 700; color: var(--brand-navy); background: white; outline: none; box-sizing: border-box; }
         
         input#cut { background: var(--brand-navy-light); color: white !important; border: 1px solid var(--brand-cyan); }
 
-        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 8px 0; color: var(--brand-navy); }
-        .res-num { font-size: 1.8rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 5px 0; color: var(--brand-navy); }
+        .res-num { font-size: 1.6rem; font-weight: 900; color: var(--brand-cyan); display: block; }
         .res-info { font-size: 0.55rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
-        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 8px; border-radius: 8px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; text-transform: uppercase; width: 100%; margin-bottom: 8px; }
-        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 10px; font-weight: 800; font-size: 0.75rem; }
+        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 8px; font-weight: 800; font-size: 0.7rem; }
 
         /* VERTICAL STACKED FOOTER */
-        footer { text-align: center; padding: 5px 20px 25px; font-size: 0.58rem; color: #94a3b8; margin-top: auto; display: flex !important; flex-direction: column !important; align-items: center !important; }
-        footer strong { color: white; display: block !important; font-size: 0.7rem; letter-spacing: 0.5px; margin-bottom: 2px; width: 100%; }
-        footer .ver { display: block !important; margin-bottom: 6px; opacity: 0.7; width: 100%; }
-        .footer-links { display: block !important; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
-        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 6px; font-weight: 700; text-transform: uppercase; }
+        footer { text-align: center; padding: 5px 15px 25px; font-size: 0.55rem; color: #94a3b8; margin-top: auto; display: flex !important; flex-direction: column !important; align-items: center !important; }
+        footer strong { color: white; display: block !important; font-size: 0.65rem; letter-spacing: 0.5px; margin-bottom: 2px; width: 100%; }
+        footer .ver { display: block !important; margin-bottom: 5px; opacity: 0.7; width: 100%; }
+        .footer-links { display: block !important; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 5px; }
+        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; font-weight: 700; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -81,52 +81,13 @@
 
     <main id="main" class="view active">
         <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
-        <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Rechner</h2><p data-t="n_p">Schnittpläne & Verschnitt</p></div></div>
-        <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht prüfen</p></div></div>
+        <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Rechner</h2><p data-t="n_p">Schnittpläne</p></div></div>
+        <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht</p></div></div>
         <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik & Sicherheit</p></div></div>
         <div class="card" onclick="go('hohl')"><div class="icon"><i data-lucide="maximize"></i></div><div class="card-text"><h2 data-t="h_h">Hohlsaum-Profi</h2><p data-t="h_p">Banner-Zulage</p></div></div>
     </main>
 
     <footer id="footer-content"></footer>
-</div>
-
-<div id="view-rollen" class="view">
-    <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-    <div class="input-box"><span class="label" data-t="r_d1" data-u>Durchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
-    <div class="input-box"><span class="label" data-t="r_d2" data-u>Kern</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
-    <div class="input-box"><span class="label" data-t="r_s" data-u>Stärke</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
-    <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">BERECHNETE LÄNGE</span></div>
-</div>
-
-<div id="view-nutzen" class="view">
-    <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-    <div style="display:flex; gap:10px;">
-        <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Platte B</span><input type="number" id="pW" value="3000" oninput="calcN()"></div>
-        <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Platte H</span><input type="number" id="pH" value="1500" oninput="calcN()"></div>
-    </div>
-    <div class="input-box"><span class="label" data-t="n_cut" data-u>Schnittbreite</span><input type="number" id="cut" value="1.5" step="0.1" oninput="calcN()"></div>
-    <div style="display:flex; gap:10px;">
-        <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb" data-u>Schild B</span><input type="number" id="sW" oninput="calcN()"></div>
-        <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh" data-u>Schild H</span><input type="number" id="sH" oninput="calcN()"></div>
-    </div>
-    <div class="res-card"><span id="resN" class="res-num">0</span><span id="resE" class="res-info" data-t="eff">Effizienz: 0%</span></div>
-</div>
-
-<div id="view-gew" class="view">
-    <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-    <div class="input-box"><span class="label" data-t="mat">Material</span>
-        <select id="gMat" class="in-view" onchange="calcG()">
-            <option value="2.7">Alu massiv</option><option value="1.2">Alu-Verbund (Dibond)</option>
-            <option value="1.19">Acryl / PLEXIGLAS®</option><option value="0.6">PVC Hartschaum (KömaCell)</option>
-            <option value="7.85">Edelstahl</option><option value="0.12">Hohlkammerplatte</option>
-        </select>
-    </div>
-    <div class="input-box"><span class="label" data-t="r_s" data-u>Stärke</span><input type="number" id="gs" value="3" oninput="calcG()"></div>
-    <div style="display:flex; gap:10px;">
-        <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>B</span><input type="number" id="gb" value="1000" oninput="calcG()"></div>
-        <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>H</span><input type="number" id="gh" value="1000" oninput="calcG()"></div>
-    </div>
-    <div class="res-card"><span id="resG" class="res-num">0.00 kg</span><span class="res-info" data-t="g_res">GESAMTGEWICHT</span></div>
 </div>
 
 <script>
@@ -148,22 +109,14 @@
         updateAllUnits(); updateFooterLinks(l); lucide.createIcons();
     }
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong><div class="ver">V2.6.1 | 30.01.2026 | © 2026</div><div class="footer-links"><a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong><div class="ver">V2.6.2 | 30.01.2026 | © 2026</div><div class="footer-links"><a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a></div>`;
     }
     function calcR() {
-        let D=parseFloat(document.getElementById('rD').value), d=parseFloat(document.getElementById('rd').value), s=parseFloat(document.getElementById('rs').value);
+        let D=parseFloat(document.getElementById('rD')?.value||0), d=parseFloat(document.getElementById('rd')?.value||0), s=parseFloat(document.getElementById('rs')?.value||0);
         if(D&&d&&s) document.getElementById('resR').innerText = ((Math.PI*(Math.pow(D,2)-Math.pow(d,2)))/(4000*s)).toFixed(2) + " m";
     }
-    function calcN() {
-        let pW=parseFloat(document.getElementById('pW').value), pH=parseFloat(document.getElementById('pH').value), sW=parseFloat(document.getElementById('sW').value), sH=parseFloat(document.getElementById('sH').value), gap=parseFloat(document.getElementById('cut').value)||0;
-        if(pW&&pH&&sW&&sH){
-            let t = Math.max(Math.floor((pW+gap)/(sW+gap)) * Math.floor((pH+gap)/(sH+gap)), Math.floor((pW+gap)/(sH+gap)) * Math.floor((pH+gap)/(sW+gap)));
-            document.getElementById('resN').innerText = t;
-            document.getElementById('resE').innerText = getT(document.getElementById('lG').value,'eff')+": "+(((t*sW*sH)/(pW*pH))*100).toFixed(1)+"%";
-        }
-    }
     function calcG() {
-        let b=parseFloat(document.getElementById('gb').value), h=parseFloat(document.getElementById('gh').value), s=parseFloat(document.getElementById('gs').value), d=parseFloat(document.getElementById('gMat').value);
+        let b=parseFloat(document.getElementById('gb')?.value||0), h=parseFloat(document.getElementById('gh')?.value||0), s=parseFloat(document.getElementById('gs')?.value||0), d=parseFloat(document.getElementById('gMat')?.value||0);
         if(b&&h&&s) { let kg = ((b*h)/1000000) * s * d; document.getElementById('resG').innerText = (document.getElementById('uG').value === 'inc' ? (kg*2.2).toFixed(2)+" lbs" : kg.toFixed(2)+" kg"); }
     }
     function go(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); lucide.createIcons(); }
