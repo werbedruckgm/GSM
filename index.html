@@ -52,8 +52,9 @@
             padding: 5px 8px; 
             border-radius: 8px; 
             border: 1px solid rgba(255,255,255,0.2); 
-            background: rgba(255,255,255,0.1); 
-            color: white;
+            background: var(--field-light); /* Hintergrund auf weiß geändert */
+            color: var(--brand-navy); /* Schriftfarbe auf Dunkelblau gesetzt */
+            font-weight: bold;
             outline: none; 
         }
 
@@ -72,7 +73,7 @@
         .app-title {
             color: white;
             text-align: center;
-            font-size: 1.15em; /* Etwas kleiner, damit der längere Name passt */
+            font-size: 1.15em;
             font-weight: 600;
             margin-top: -5px; 
             margin-bottom: 15px;
@@ -224,7 +225,7 @@
 </div>
 
 <script>
-// JavaScript bleibt identisch
+// (JavaScript Logik bleibt unverändert)
 const translations = {
     de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN" },
     en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER" }
