@@ -35,16 +35,16 @@
         .logo-area img { max-width: 110px; height: auto; cursor: pointer; }
         .logo-area h1 { font-size: 0.8rem; letter-spacing: 1px; margin: 3px 0; font-weight: 800; }
         
-        /* Buttons - Kompakt-Modus */
+        /* Compact Buttons */
         .card { background: white; border-radius: 12px; padding: 8px 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--brand-navy); margin-bottom: 10px; }
         .icon { width: 32px; height: 32px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .card-text h2 { margin: 0; font-size: 0.85rem; }
         .card-text p { margin: 0; font-size: 0.6rem; color: #64748b; }
 
-        .bt-btn, .action-btn { background: #2563eb; color: white; border: none; padding: 6px 10px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
+        .bt-btn, .action-btn { background: #2563eb; color: white; border: none; padding: 5px 10px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 8px; }
         .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 12px; font-weight: bold; font-size: 0.7rem; }
 
-        /* Inputs */
+        /* Inputs & Typography */
         .input-box { margin-bottom: 8px; }
         .label { font-size: 0.55rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 3px; display: block; }
         input { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid transparent; font-size: 0.85rem; font-weight: bold; color: var(--brand-navy); box-sizing: border-box; outline: none; }
@@ -58,6 +58,7 @@
 
         footer { text-align: center; padding: 12px; font-size: 0.55rem; color: #94a3b8; margin-top: auto; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 4px; }
+        .hist-item { background: rgba(255,255,255,0.1); padding: 8px; border-radius: 8px; margin-bottom: 6px; cursor: pointer; font-size: 0.7rem; }
     </style>
 </head>
 <body>
@@ -81,7 +82,7 @@
             <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
             <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Optimierer</h2><p data-t="n_p">Schnittpläne</p></div></div>
             <div class="card" onclick="go('led')"><div class="icon"><i data-lucide="lightbulb"></i></div><div class="card-text"><h2 data-t="l_h">LED-Profi</h2><p data-t="l_p">Licht-Planung</p></div></div>
-            <div class="card" onclick="showHistory()"><div class="icon" style="color:#fbbf24;"><i data-lucide="history"></i></div><div class="card-text"><h2 data-t="hist">Historie</h2><p data-t="hist_p">Projekte</p></div></div>
+            <div class="card" onclick="showHistory()"><div class="icon" style="color:#fbbf24;"><i data-lucide="history"></i></div><div class="card-text"><h2 data-t="hist">Historie</h2><p data-t="hist_p">Gespeicherte Projekte</p></div></div>
         </div>
         <footer id="footer-content"></footer>
     </div>
@@ -89,8 +90,8 @@
     <div id="view-rollen" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="r_h">Rollen-Meter</h1></div>
-        <button class="bt-btn" onclick="alert('BT Search...')"><i data-lucide="bluetooth"></i> <span data-t="bt">Verbinden</span></button>
-        <div class="input-box"><span class="label" data-t="r_d1">Durchmesser (D)</span><input type="number" id="rD" oninput="calcR()"></div>
+        <button class="bt-btn" onclick="alert('BT Search...')"><i data-lucide="bluetooth"></i> <span data-t="bt">BT-Verbinden</span></button>
+        <div class="input-box"><span class="label" data-t="r_d1">Durchmesser (D)</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_d2">Kern (d)</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_s">Stärke (mm)</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
         <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">LÄNGE</span></div>
@@ -105,8 +106,8 @@
         </div>
         <div class="input-box"><span class="label" data-t="n_cut">Schnittbreite</span><input type="number" id="cut" value="0" step="0.5" oninput="calcN()" style="background:rgba(29,161,242,0.1)"></div>
         <div style="display:flex; gap:8px;">
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb">Schild B</span><input type="number" id="sW" oninput="calcN()"></div>
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh">Schild H</span><input type="number" id="sH" oninput="calcN()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sb">Schild B</span><input type="number" id="sW" placeholder="600" oninput="calcN()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_sh">Schild H</span><input type="number" id="sH" placeholder="400" oninput="calcN()"></div>
         </div>
         <div class="res-card"><span id="resN" class="res-num">0</span><span id="resE" class="res-info" data-t="eff">Effizienz: 0%</span></div>
     </div>
@@ -121,7 +122,7 @@
         <div class="input-box"><span class="label" data-t="l_z">Tiefe (Z)</span><input type="number" id="lz" value="100" oninput="calcL()"></div>
         <select id="lSelect" onchange="applyModule()">
             <option value="gs_eco">GS-Eco 0.72W</option><option value="gs_pow">GS-Power 1.20W</option>
-            <option value="amz_std">AMZ Standard 0.72W</option><option value="amz_inj">AMZ Inject 1.50W</option>
+            <option value="amz_std">AMZ Std 0.72W</option><option value="amz_inj">AMZ Inj 1.50W</option>
         </select>
         <div class="res-card"><span class="res-info" data-t="l_res">ABSTAND</span><span id="resL" class="res-num">0.0 mm</span></div>
         <div class="spec-box">
@@ -136,7 +137,6 @@
         <div class="back-btn" onclick="go('led')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div id="order-content" class="order-list" style="background:white; color:#0e1d3a; padding:15px; border-radius:15px; font-size:0.75rem;"></div>
         <button class="action-btn" style="background:#25D366; color:white; margin-top:12px;" onclick="shareWhatsApp()"><i data-lucide="message-circle"></i> WhatsApp</button>
-        <button class="action-btn" style="background:#ff9900; color:black;" onclick="searchAmz()"><i data-lucide="shopping-cart"></i> Amazon</button>
     </div>
 
     <div id="view-historie" class="view">
@@ -148,31 +148,34 @@
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "BT-Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser (D)", r_d2: "Kern (d)", r_s: "Stärke (mm)", res_l: "LÄNGE", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Planung", l_z: "Tiefe (Z)", l_res: "ABSTAND", l_qty: "Module", l_psu: "Netzteil", hist: "Historie", hist_p: "Projekte", proj: "Projektname", proj_p: "Kunde...", save_btn: "Speichern", list_btn: "Liste", clear_hist: "Löschen", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", bt: "BT-Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "LENGTH", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Depth (Z)", l_res: "SPACING", l_qty: "Modules", l_psu: "PSU", hist: "History", hist_p: "Projects", proj: "Project", proj_p: "Customer...", save_btn: "Save", list_btn: "List", clear_hist: "Clear", imp: "Legal", priv: "Privacy" },
-        // ... (Alle anderen Sprachen mit identischem Mapping)
-        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connexion BT", r_h: "Mètre de Rouleau", r_p: "Calculer", r_d1: "Diamètre (D)", r_d2: "Noyau (d)", r_s: "Épaisseur", res_l: "LONGUEUR", n_h: "Optimiseur", n_p: "Mises en page", n_pb: "Largeur", n_ph: "Hauteur", n_cut: "Largeur de coupe", n_sb: "Panneau B", n_sh: "Panneau H", eff: "Efficacité", l_h: "LED Pro", l_p: "Planification", l_z: "Profondeur", l_res: "DISTANCE", l_qty: "Modules", l_psu: "Alimentation", hist: "Historique", hist_p: "Projets", proj: "Nom Projet", proj_p: "Client...", save_btn: "Enregistrer", list_btn: "Liste", clear_hist: "Effacer", imp: "Mentions", priv: "Confidentialité" }
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "BT-Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser (D)", r_d2: "Kern (d)", r_s: "Stärke (mm)", res_l: "LÄNGE", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Planung", l_z: "Tiefe (Z)", l_res: "ABSTAND", l_qty: "Module", l_psu: "Netzteil", hist: "Historie", hist_p: "Projekte", proj: "Projektname", proj_p: "Kunde...", save_btn: "Speichern", list_btn: "Liste", clear_hist: "Löschen", imp: "Impressum", priv: "Datenschutz" },
+        en: { mainH: "Signmaker Tools", back: "BACK", bt: "BT-Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "LENGTH", n_h: "Nesting", n_p: "Layouts", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Depth (Z)", l_res: "SPACING", l_qty: "Modules", l_psu: "PSU", hist: "History", hist_p: "Projects", proj: "Project", proj_p: "Customer...", save_btn: "Save", list_btn: "List", clear_hist: "Clear", imp: "Legal", priv: "Privacy" },
+        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connexion BT", r_h: "Mètre de Rouleau", r_p: "Calculer", r_d1: "Diamètre (D)", r_d2: "Noyau (d)", r_s: "Épaisseur", res_l: "LONGUEUR", n_h: "Optimiseur", n_p: "Mises en page", n_pb: "Largeur", n_ph: "Hauteur", n_cut: "Coupe", n_sb: "Panneau B", n_sh: "Panneau H", eff: "Efficacité", l_h: "LED Pro", l_p: "Plan", l_z: "Profondeur", l_res: "DISTANCE", l_qty: "Modules", l_psu: "Alim.", hist: "Historique", hist_p: "Projets", proj: "Nom", proj_p: "Client...", save_btn: "Sauver", list_btn: "Liste", clear_hist: "Effacer", imp: "Mentions", priv: "Confidentialité" },
+        es: { mainH: "Herramientas de Rótulo", back: "VOLVER", bt: "Conexión BT", r_h: "Metro de Rollo", r_p: "Calcular", r_d1: "Diámetro (D)", r_d2: "Núcleo (d)", r_s: "Espesor", res_l: "LONGITUD", n_h: "Optimizador", n_p: "Diseños", n_pb: "Ancho", n_ph: "Alto", n_cut: "Corte", n_sb: "Cartel B", n_sh: "Cartel H", eff: "Eficiencia", l_h: "LED Pro", l_p: "Plan", l_z: "Profundidad", l_res: "DISTANCIA", l_qty: "Módulos", l_psu: "Fuente", hist: "Historial", hist_p: "Proyectos", proj: "Proyecto", proj_p: "Cliente...", save_btn: "Guardar", list_btn: "Lista", clear_hist: "Borrar", imp: "Aviso", priv: "Privacidad" },
+        it: { mainH: "Strumenti Insegne", back: "INDIETRO", bt: "Connetti BT", r_h: "Metro a Rullo", r_p: "Calcola", r_d1: "Diametro (D)", r_d2: "Anima (d)", r_s: "Spessore", res_l: "LUNGHEZZA", n_h: "Ottimizzatore", n_p: "Layout", n_pb: "Lastra L", n_ph: "Lastra A", n_cut: "Taglio", n_sb: "Insegna L", n_sh: "Insegna A", eff: "Efficienza", l_h: "LED Pro", l_p: "Pianifica", l_z: "Profondità", l_res: "DISTANZA", l_qty: "Moduli", l_psu: "Alimentatore", hist: "Cronologia", hist_p: "Progetti", proj: "Progetto", proj_p: "Cliente...", save_btn: "Salva", list_btn: "Lista", clear_hist: "Cancella", imp: "Note", priv: "Privacy" },
+        nl: { mainH: "Signmaker Tools", back: "TERUG", bt: "BT-Verbinden", r_h: "Rolmeter", r_p: "Berekenen", r_d1: "Diameter (D)", r_d2: "Kern (d)", r_s: "Dikte", res_l: "LENGTE", n_h: "Optimalisator", n_p: "Layouts", n_pb: "Plaat B", n_ph: "Plaat H", n_cut: "Snijbreedte", n_sb: "Bord B", n_sh: "Bord H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Diepte", l_res: "AFSTAND", l_qty: "Modules", l_psu: "Voeding", hist: "Historie", hist_p: "Projecten", proj: "Project", proj_p: "Klant...", save_btn: "Opslaan", list_btn: "Lijst", clear_hist: "Wissen", imp: "Colofon", priv: "Privacy" },
+        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", bt: "Połącz BT", r_h: "Miernik Rolek", r_p: "Oblicz", r_d1: "Średnica (D)", r_d2: "Rdzeń (d)", r_s: "Grubość", res_l: "DŁUGOŚĆ", n_h: "Optymalizator", n_p: "Układy", n_pb: "Płyta S", n_ph: "Płyta W", n_cut: "Szerokość cięcia", n_sb: "Szyld S", n_sh: "Szyld W", eff: "Wydajność", l_h: "LED Pro", l_p: "Planowanie", l_z: "Głębokość", l_res: "DYSTANS", l_qty: "Moduły", l_psu: "Zasilacz", hist: "Historia", hist_p: "Projekty", proj: "Projekt", proj_p: "Klient...", save_btn: "Zapisz", list_btn: "Lista", clear_hist: "Usuń", imp: "Nota", priv: "Prywatność" },
+        ru: { mainH: "Инструменты", back: "НАЗАД", bt: "BT-Связь", r_h: "Рулонный метр", r_p: "Расчет", r_d1: "Диаметр (D)", r_d2: "Втулка (d)", r_s: "Толщина", res_l: "ДЛИНА", n_h: "Раскрой", n_p: "Макеты", n_pb: "Лист Ш", n_ph: "Лист В", n_cut: "Рез", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эффект.", l_h: "LED Профи", l_p: "Планирование", l_z: "Глубина", l_res: "ИНТЕРВАЛ", l_qty: "Модули", l_psu: "Блок", hist: "История", hist_p: "Проекты", proj: "Проект", proj_p: "Клиент...", save_btn: "Сохранить", list_btn: "Список", clear_hist: "Удалить", imp: "Контакты", priv: "Данные" },
+        da: { mainH: "Skiltetekniker", back: "TILBAGE", bt: "BT-Forbind", r_h: "Rulle-meter", r_p: "Beregn", r_d1: "Diameter (D)", r_d2: "Kerne (d)", r_s: "Tykkelse", res_l: "LÆNGDE", n_h: "Optimering", n_p: "Layouts", n_pb: "Plade B", n_ph: "Plade H", n_cut: "Skærebredde", n_sb: "Skilt B", n_sh: "Skilt H", eff: "Effektivitet", l_h: "LED Pro", l_p: "Plan", l_z: "Dybde", l_res: "AFSTAND", l_qty: "Moduler", l_psu: "Strøm", hist: "Historik", hist_p: "Projekter", proj: "Projekt", proj_p: "Kunde...", save_btn: "Gem", list_btn: "Liste", clear_hist: "Slet", imp: "Impressum", priv: "Privatliv" },
+        no: { mainH: "Skiltmaker", back: "TILBAKE", bt: "BT-Koble", r_h: "Rullemåler", r_p: "Beregn", r_d1: "Diameter (D)", r_d2: "Kjerne (d)", r_s: "Tykkelse", res_l: "LENGDE", n_h: "Optimering", n_p: "Layouts", n_pb: "Plate B", n_ph: "Plate H", n_cut: "Skjærebredde", n_sb: "Skilt B", n_sh: "Skilt H", eff: "Effektivitet", l_h: "LED Pro", l_p: "Plan", l_z: "Dybde", l_res: "AVSTAND", l_qty: "Moduler", l_psu: "Strøm", hist: "Historikk", hist_p: "Prosjekter", proj: "Prosjekt", proj_p: "Kunde...", save_btn: "Lagre", list_btn: "Liste", clear_hist: "Slett", imp: "Juridisk", priv: "Personvern" },
+        ja: { mainH: "看板ツール", back: "戻る", bt: "BT接続", r_h: "ロールメーター", r_p: "計算", r_d1: "直径 (D)", r_d2: "芯 (d)", r_s: "厚み", res_l: "長さ", n_h: "最適化", n_p: "配置", n_pb: "幅", n_ph: "高さ", n_cut: "カット幅", n_sb: "幅 B", n_sh: "高さ H", eff: "効率", l_h: "LEDプロ", l_p: "計画", l_z: "深さ", l_res: "間隔", l_qty: "モジュール", l_psu: "電源", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト名", proj_p: "顧客...", save_btn: "保存", list_btn: "リスト", clear_hist: "削除", imp: "会社概要", priv: "プライバシー" }
     };
-    // Kopiere fr Mapping für restliche Sprachen als Platzhalter (zur Sicherheit)
-    ["es", "it", "nl", "pl", "ru", "da", "no", "ja"].forEach(lang => { if(!i18n[lang]) i18n[lang] = i18n.en; });
+
+    function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
 
     function changeLang() {
         const l = document.getElementById('lG').value;
         document.querySelectorAll('[data-t]').forEach(el => { el.innerText = getT(l, el.getAttribute('data-t')); });
         document.querySelectorAll('[data-p]').forEach(el => { el.placeholder = getT(l, el.getAttribute('data-p')); });
         updateFooterLinks(l);
+        calcN(); calcR(); calcL();
     }
-    function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
+
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.5 | 30.01.2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.6 | 30.01.2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
     }
 
-    function initApp() {
-        const browserLang = navigator.language.split('-')[0];
-        document.getElementById('lG').value = i18n[browserLang] ? browserLang : 'en';
-        changeLang(); lucide.createIcons(); calcL(); calcR(); calcN();
-    }
-
+    /* TOOLS LOGIC */
     function calcR() {
         let D = parseFloat(document.getElementById('rD').value), d = parseFloat(document.getElementById('rd').value), s = parseFloat(document.getElementById('rs').value);
         if(D && d && s) document.getElementById('resR').innerText = ((Math.PI * (Math.pow(D,2)-Math.pow(d,2)))/(4000*s)).toFixed(2) + " m";
@@ -204,27 +207,32 @@
     }
 
     function saveToHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_h5') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_h6') || '[]');
         h.unshift({ n: document.getElementById('projName').value || "Project", d: new Date().toLocaleDateString(), q: document.getElementById('outQty').innerText, m: modules[document.getElementById('lSelect').value].name });
-        localStorage.setItem('gs_h5', JSON.stringify(h.slice(0, 10))); alert("Saved!");
+        localStorage.setItem('gs_h6', JSON.stringify(h.slice(0, 10))); alert("Saved!");
     }
     function showHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_h5') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_h6') || '[]');
         document.getElementById('hist-list').innerHTML = h.map(i => `<div class="hist-item"><strong>${i.n}</strong> (${i.d})<br>${i.q}x ${i.m}</div>`).join('');
         go('historie');
     }
-    function clearHistory() { localStorage.removeItem('gs_h5'); showHistory(); }
+    function clearHistory() { localStorage.removeItem('gs_h6'); showHistory(); }
     function applyModule() { calcL(); }
     function go(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); lucide.createIcons(); }
-    function searchAmz() { window.open(`https://www.amazon.de/s?k=${encodeURIComponent(modules[document.getElementById('lSelect').value].name)}`, '_blank'); }
     function shareWhatsApp() { 
-        let text = `*PROJEKT:* ${document.getElementById('projName').value}\n📦 ${document.getElementById('outQty').innerText}x ${modules[document.getElementById('lSelect').value].name}\n⚡ PSU: ${document.getElementById('outPSU').innerText}`;
+        let text = `*PROJEKT:* ${document.getElementById('projName').value}\n📦 ${document.getElementById('outQty').innerText}x ${modules[document.getElementById('lSelect').value].name}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
     }
     function showList() {
         let mod = modules[document.getElementById('lSelect').value];
         document.getElementById('order-content').innerHTML = `<strong>${document.getElementById('projName').value}</strong><hr>${document.getElementById('outQty').innerText}x ${mod.name}<br>${document.getElementById('outPSU').innerText}`;
         go('liste');
+    }
+
+    function initApp() {
+        const browserLang = navigator.language.split('-')[0];
+        document.getElementById('lG').value = i18n[browserLang] ? browserLang : 'en';
+        changeLang(); lucide.createIcons();
     }
 
     let clks = 0, tmr;
