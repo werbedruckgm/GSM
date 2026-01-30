@@ -35,6 +35,7 @@
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
+        /* Menu Cards */
         .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
         .icon { width: 40px; height: 40px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -48,17 +49,18 @@
         .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
         input, select.in-view { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
+        /* Schnittbreite Fix */
         input#cut { background: #1a3a5a; color: #ffffff !important; border: 1px solid var(--brand-cyan); }
 
         .res-card { background: white; padding: 15px; border-radius: 20px; text-align: center; margin: 10px 0; color: var(--brand-navy); }
         .res-num { font-size: 2.2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
         .res-info { font-size: 0.6rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
 
-        /* FIXED FOOTER HIERARCHY */
-        footer { text-align: center; padding: 25px 20px; font-size: 0.65rem; color: #94a3b8; margin-top: auto; display: flex; flex-direction: column; align-items: center; }
-        footer strong { color: white; display: block; margin-bottom: 5px; font-size: 0.75rem; letter-spacing: 0.8px; }
-        footer div.ver { display: block; margin-bottom: 12px; opacity: 0.8; }
-        .footer-links { display: block; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; width: 100%; }
+        /* FORCED VERTICAL FOOTER */
+        footer { text-align: center; padding: 25px 20px; font-size: 0.65rem; color: #94a3b8; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer strong { color: white; display: block !important; margin-bottom: 5px; font-size: 0.75rem; letter-spacing: 0.8px; width: 100%; }
+        footer .ver { display: block !important; margin-bottom: 15px; opacity: 0.8; width: 100%; }
+        .footer-links { display: block !important; width: 100%; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 8px; font-weight: 600; }
     </style>
 </head>
@@ -96,7 +98,7 @@
         <div class="input-box"><span class="label" data-t="r_d1" data-u>Rollendurchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_d2" data-u>Kerndurchmesser</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_s" data-u>Materialstärke</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
-        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">Berechnete Länge</span></div>
+        <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">BERECHNETE LÄNGE</span></div>
     </div>
 
     <div id="view-nutzen" class="view">
@@ -120,9 +122,9 @@
         <div class="input-box"><span class="label" data-t="mat">Material</span>
             <select id="gMat" class="in-view" onchange="calcG()">
                 <option value="2.7">Alu massiv</option>
-                <option value="1.2">Alu-Verbund (Dibond-Style)</option>
+                <option value="1.2">Alu-Verbund (z.B. Dibond)</option>
                 <option value="1.19">Acryl / PLEXIGLAS®</option>
-                <option value="0.6">PVC Hartschaum (KömaCell)</option>
+                <option value="0.6">PVC Hartschaum (z.B. KömaCell)</option>
                 <option value="7.85">Edelstahl / Stahl</option>
                 <option value="2.5">Glas</option>
                 <option value="0.12">Hohlkammerplatte (PP)</option>
@@ -158,7 +160,7 @@
 <script>
     const i18n = {
         de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Rollendurchmesser", r_d2: "Kerndurchmesser", r_s: "Materialstärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Bannerdicke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Roll Diameter", r_d2: "Core Diameter", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
+        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Roll Diameter", r_d2: "Core Diameter", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
     };
     ["fr", "es", "it", "nl", "pl", "da", "no", "ru", "ja"].forEach(l => { if(!i18n[l]) i18n[l] = i18n.en; });
 
@@ -183,7 +185,7 @@
     function updateFooterLinks(l) {
         document.getElementById('footer-content').innerHTML = `
             <strong>GRÖNER-SCHULZE GMBH</strong>
-            <div class="ver">V2.5.4 | 30.01.2026 | © 2026</div>
+            <div class="ver">V2.5.5 | 30.01.2026 | © 2026</div>
             <div class="footer-links">
                 <a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a>
             </div>`;
