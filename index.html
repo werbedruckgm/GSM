@@ -18,7 +18,7 @@
             width: var(--app-width); min-width: var(--app-width); background: var(--brand-navy);
             color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 35px;
             overflow: hidden; display: flex; flex-direction: column; margin: 10px;
-            position: relative; height: 740px;
+            position: relative; height: 780px;
         }
         @media (max-width: 380px) { .app-shell { width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
         
@@ -28,35 +28,32 @@
         .top-nav { display: flex; justify-content: space-between; padding: 20px 25px 5px; gap: 10px; }
         select { background: white; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; color: #333; outline: none; cursor: pointer; }
         
-        .logo-area { text-align: center; padding: 10px 0 15px; }
-        .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 10px; }
-        .logo-area h1 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 5px 0; font-weight: 700; color: white; }
+        .logo-area { text-align: center; padding: 10px 0 10px; }
+        .logo-area img { max-width: 120px; height: auto; cursor: pointer; margin-bottom: 8px; }
+        .logo-area h1 { font-size: 1rem; letter-spacing: 0.5px; margin: 3px 0; font-weight: 700; color: white; }
         
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
-        .card { background: white; border-radius: 20px; padding: 14px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
-        .card:active { transform: scale(0.97); }
-        .icon { width: 44px; height: 44px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .card-text h2 { margin: 0; font-size: 1rem; font-weight: 700; }
-        .card-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 500; }
+        .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .icon { width: 40px; height: 40px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .card-text h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+        .card-text p { margin: 0; font-size: 0.65rem; color: #64748b; font-weight: 500; }
 
-        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
-        .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 15px; font-weight: 800; font-size: 0.75rem; }
+        .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
+        .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 12px; font-weight: 800; font-size: 0.75rem; }
 
         .input-box { margin-bottom: 10px; }
         .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.95rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
+        input, select.in-view { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
-        /* FIX: Schnittbreite Lesbarkeit (Weisse Zahl) */
         input#cut { background: #1a3a5a; color: #ffffff !important; border: 1px solid var(--brand-cyan); }
 
         .res-card { background: white; padding: 15px; border-radius: 20px; text-align: center; margin: 10px 0; color: var(--brand-navy); }
-        .res-num { font-size: 2.2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
-        .res-info { font-size: 0.65rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
+        .res-num { font-size: 2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-info { font-size: 0.6rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
 
-        footer { text-align: center; padding: 20px; font-size: 0.65rem; color: #94a3b8; margin-top: auto; }
-        footer strong { color: white; display: block; margin-bottom: 4px; }
+        footer { text-align: center; padding: 15px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; }
     </style>
 </head>
@@ -78,22 +75,11 @@
     <div id="main" class="view active">
         <div class="logo-area"><img src="GS-Logo.jpg" id="logo-trigger" alt="GS"><h1 data-t="mainH">Werbetechniker-Tools</h1></div>
         <div class="menu-list">
-            <div class="card" onclick="go('rollen')">
-                <div class="icon"><i data-lucide="ruler"></i></div>
-                <div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div>
-            </div>
-            <div class="card" onclick="go('nutzen')">
-                <div class="icon"><i data-lucide="layout-grid"></i></div>
-                <div class="card-text"><h2 data-t="n_h">Nutzen-Optimierer</h2><p data-t="n_p">Schnittpläne & Verschnitt</p></div>
-            </div>
-            <div class="card" onclick="go('led')">
-                <div class="icon"><i data-lucide="lightbulb"></i></div>
-                <div class="card-text"><h2 data-t="l_h">LED-Profi</h2><p data-t="l_p">Abstände & Ausleuchtung</p></div>
-            </div>
-            <div class="card" onclick="showHistory()">
-                <div class="icon" style="color:#fbbf24;"><i data-lucide="history"></i></div>
-                <div class="card-text"><h2 data-t="hist">Historie</h2><p data-t="hist_p">Gespeicherte Projekte</p></div>
-            </div>
+            <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
+            <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Optimierer</h2><p data-t="n_p">Schnittpläne</p></div></div>
+            <div class="card" onclick="go('hohl')"><div class="icon"><i data-lucide="maximize"></i></div><div class="card-text"><h2 data-t="h_h">Hohlsaum-Profi</h2><p data-t="h_p">Banner-Zulage</p></div></div>
+            <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht</p></div></div>
+            <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik-Sicherheit</p></div></div>
         </div>
         <footer id="footer-content"></footer>
     </div>
@@ -102,8 +88,8 @@
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="r_h">Rollen-Meter</h1></div>
         <button class="bt-btn" onclick="alert('BT Search...')"><i data-lucide="bluetooth"></i> <span data-t="bt">Verbinden</span></button>
-        <div class="input-box"><span class="label" data-t="r_d1" data-u>Rollendurchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
-        <div class="input-box"><span class="label" data-t="r_d2" data-u>Kerndurchmesser</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
+        <div class="input-box"><span class="label" data-t="r_d1" data-u>Durchmesser</span><input type="number" id="rD" value="150" oninput="calcR()"></div>
+        <div class="input-box"><span class="label" data-t="r_d2" data-u>Kern</span><input type="number" id="rd" value="76" oninput="calcR()"></div>
         <div class="input-box"><span class="label" data-t="r_s" data-u>Stärke</span><input type="number" id="rs" value="0.15" step="0.01" oninput="calcR()"></div>
         <div class="res-card"><span id="resR" class="res-num">0.00 m</span><span class="res-info" data-t="res_l">Berechnete Länge</span></div>
     </div>
@@ -123,51 +109,74 @@
         <div class="res-card"><span id="resN" class="res-num">0</span><span id="resE" class="res-info" data-t="eff">Effizienz: 0%</span></div>
     </div>
 
-    <div id="view-led" class="view">
+    <div id="view-gew" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-        <div class="logo-area"><h1>LED-Profi</h1></div>
-        <div class="input-box"><span class="label" data-t="proj">Projektname</span><input type="text" id="projName" data-p="proj_p"></div>
-        <div class="input-box"><span class="label" data-t="l_z" data-u>Kastentiefe (Z)</span><input type="number" id="lz" value="100" oninput="calcL()"></div>
-        <div class="res-card"><span class="res-info" data-t="l_res">Max. Abstand</span><span id="resL" class="res-num">0.0 mm</span></div>
-        <button class="action-btn" onclick="saveToHistory()"><i data-lucide="save"></i> <span data-t="save_btn">Speichern</span></button>
+        <div class="logo-area"><h1 data-t="g_h">Gewichts-Detektor</h1></div>
+        <div class="input-box"><span class="label" data-t="mat">Material</span>
+            <select id="gMat" class="in-view" onchange="calcG()">
+                <option value="2.7">Alu-Dibond (3mm)</option>
+                <option value="1.19">Acryl / PLEXIGLAS®</option>
+                <option value="1.4">PVC Hartschaum (KömaCell)</option>
+                <option value="0.5">PVC Banner (510g)</option>
+            </select>
+        </div>
+        <div style="display:flex; gap:10px;">
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>B</span><input type="number" id="gb" value="1000" oninput="calcG()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>H</span><input type="number" id="gh" value="1000" oninput="calcG()"></div>
+        </div>
+        <div class="res-card"><span id="resG" class="res-num">0.00 kg</span><span class="res-info" data-t="g_res">GESAMTGEWICHT</span></div>
     </div>
 
-    <div id="view-historie" class="view">
+    <div id="view-wind" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
-        <div id="hist-list"></div>
-        <button class="action-btn" style="background:#ef4444; color:white; margin-top:15px;" onclick="clearHistory()" data-t="clear_hist">Verlauf löschen</button>
+        <div class="logo-area"><h1 data-t="w_h">Windlast-Prüfer</h1></div>
+        <div style="display:flex; gap:10px;">
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>B</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>H</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
+        </div>
+        <div class="res-card">
+            <span id="resW" class="res-num">0 N</span>
+            <span class="res-info" id="resWkg">Druck bei Windstärke 9 (~0.5 kN/m²)</span>
+        </div>
+        <p style="font-size:0.5rem; text-align:center; opacity:0.6; padding-top:10px;">Statische Schätzung nach DIN 1055</p>
+    </div>
+
+    <div id="view-hohl" class="view">
+        <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
+        <div class="logo-area"><h1 data-t="h_h">Hohlsaum-Profi</h1></div>
+        <div class="input-box"><span class="label" data-t="h_d" data-u>Stangendurchmesser</span><input type="number" id="hd" value="30" oninput="calcH()"></div>
+        <div class="input-box"><span class="label" data-t="h_s" data-u>Stärke</span><input type="number" id="hs" value="0.5" oninput="calcH()"></div>
+        <div class="res-card"><span id="resH" class="res-num">0.0 mm</span><span class="res-info" data-t="h_res">ZUGABE PRO SEITE</span></div>
     </div>
 </div>
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Rollendurchmesser", r_d2: "Kerndurchmesser", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", l_h: "LED-Profi", l_p: "Ausleuchtung", l_z: "Tiefe", l_res: "Abstand", hist: "Historie", hist_p: "Projekte", proj: "Projekt", proj_p: "Kunde...", save_btn: "Speichern", clear_hist: "Löschen", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Roll Diameter", r_d2: "Core Diameter", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Planning", l_z: "Depth", l_res: "Spacing", hist: "History", hist_p: "Projects", proj: "Project", proj_p: "Customer...", save_btn: "Save", clear_hist: "Clear", imp: "Legal", priv: "Privacy" },
-        ru: { mainH: "Инструменты", back: "НАЗАД", bt: "Связь", r_h: "Рулонный метр", r_p: "Расчет", r_d1: "Диаметр рулона", r_d2: "Диаметр втулки", r_s: "Толщина", res_l: "Длина", n_h: "Раскрой", n_p: "Макеты", n_pb: "Лист Ш", n_ph: "Лист В", n_cut: "Ширина реза", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эфф.", l_h: "LED Профи", l_p: "Свет", l_z: "Глубина", l_res: "Интервал", hist: "История", hist_p: "Проекты", proj: "Проект", proj_p: "Клиент...", save_btn: "Сохранить", clear_hist: "Удалить", imp: "Контакты", priv: "Данные" },
-        ja: { mainH: "看板製作ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "計算", r_d1: "ロール直径", r_d2: "芯の直径", r_s: "厚み", res_l: "長さ", n_h: "最適化", n_p: "レイアウト", n_pb: "プレート幅", n_ph: "プレート高さ", n_cut: "カット幅", n_sb: "サイン幅", n_sh: "サイン高さ", eff: "効率", l_h: "LEDプロ", l_p: "照明計画", l_z: "奥行き", l_res: "最大間隔", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト", proj_p: "顧客...", save_btn: "保存", clear_hist: "削除", imp: "会社概要", priv: "個人情報" }
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Rollendurchmesser", r_d2: "Kerndurchmesser", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Stärke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
+        en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Roll Diameter", r_d2: "Core Diameter", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" },
+        ru: { mainH: "Инструменты", back: "НАЗАД", bt: "Связь", r_h: "Рулонный метр", r_p: "Расчет", r_d1: "Диаметр рулона", r_d2: "Втулка", r_s: "Толщина", res_l: "Длина", n_h: "Раскрой", n_p: "Макеты", n_pb: "Лист Ш", n_ph: "Лист В", n_cut: "Ширина реза", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эфф.", h_h: "Профи Подгиба", h_p: "Припуск", h_d: "Диаметр штанги", h_s: "Толщина", h_res: "Припуск на сторону", g_h: "Вес", g_p: "Расчет веса", g_res: "Общий вес", w_h: "Ветровая нагрузка", w_p: "Проверка статики", mat: "Материал", imp: "Контакты", priv: "Данные" },
+        ja: { mainH: "看板製作ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "計算", r_d1: "ロール直径", r_d2: "芯の直径", r_s: "厚み", res_l: "長さ", n_h: "最適化", n_p: "レイアウト", n_pb: "プレート幅", n_ph: "プレート高さ", n_cut: "カット幅", n_sb: "サイン幅", n_sh: "サイン高さ", eff: "効率", h_h: "袋加工プロ", h_p: "バナー余白", h_d: "棒の直径", h_s: "厚み", h_res: "片側あたりの余白", g_h: "重量計", g_p: "素材の重さ", g_res: "総重量", w_h: "風圧チェッカー", w_p: "静的チェック", mat: "素材", imp: "会社概要", priv: "個人情報" }
     };
     ["fr", "es", "it", "nl", "pl", "da", "no"].forEach(l => { if(!i18n[l]) i18n[l] = i18n.en; });
+
+    function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
 
     function updateAllUnits() {
         const u = document.getElementById('uG').value;
         const l = document.getElementById('lG').value;
         document.querySelectorAll('[data-u]').forEach(el => {
-            const key = el.getAttribute('data-t');
-            const baseText = getT(l, key);
-            el.innerText = `${baseText} (${u})`;
+            el.innerText = `${getT(l, el.getAttribute('data-t'))} (${u})`;
         });
-        calcN(); calcR(); calcL();
+        calcN(); calcR(); calcH(); calcG(); calcW();
     }
 
     function changeLang() {
         const l = document.getElementById('lG').value;
         document.querySelectorAll('[data-t]').forEach(el => { if(!el.hasAttribute('data-u')) el.innerText = getT(l, el.getAttribute('data-t')); });
-        document.querySelectorAll('[data-p]').forEach(el => { el.placeholder = getT(l, el.getAttribute('data-p')); });
         updateAllUnits(); updateFooterLinks(l); lucide.createIcons();
     }
 
-    function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
-    function updateFooterLinks(l) { document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.3.6 | 30.01.2026 | © 2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`; }
+    function updateFooterLinks(l) { document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.5.0 | 30.01.2026<br><div class="footer-links"><a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a></div>`; }
 
     function calcR() {
         let D=parseFloat(document.getElementById('rD').value), d=parseFloat(document.getElementById('rd').value), s=parseFloat(document.getElementById('rs').value);
@@ -177,35 +186,41 @@
     function calcN() {
         let pW=parseFloat(document.getElementById('pW').value), pH=parseFloat(document.getElementById('pH').value), sW=parseFloat(document.getElementById('sW').value), sH=parseFloat(document.getElementById('sH').value), gap=parseFloat(document.getElementById('cut').value)||0;
         if(pW&&pH&&sW&&sH){
-            let n1 = Math.floor((pW+gap)/(sW+gap)) * Math.floor((pH+gap)/(sH+gap)), n2 = Math.floor((pW+gap)/(sH+gap)) * Math.floor((pH+gap)/(sW+gap));
-            let t = Math.max(n1, n2); document.getElementById('resN').innerText = t;
+            let t = Math.max(Math.floor((pW+gap)/(sW+gap)) * Math.floor((pH+gap)/(sH+gap)), Math.floor((pW+gap)/(sH+gap)) * Math.floor((pH+gap)/(sW+gap)));
+            document.getElementById('resN').innerText = t;
             document.getElementById('resE').innerText = getT(document.getElementById('lG').value,'eff')+": "+(((t*sW*sH)/(pW*pH))*100).toFixed(1)+"%";
         }
     }
 
-    function calcL() {
-        let z=parseFloat(document.getElementById('lz').value); 
-        if(z) document.getElementById('resL').innerText = (2*z*Math.tan((160/2)*(Math.PI/180))*0.6).toFixed(1) + " mm";
+    function calcG() {
+        let b=parseFloat(document.getElementById('gb').value), h=parseFloat(document.getElementById('gh').value), dens=parseFloat(document.getElementById('gMat').value), u=document.getElementById('uG').value;
+        if(b&&h) {
+            let m2 = (b*h)/1000000;
+            let res = m2 * dens;
+            document.getElementById('resG').innerText = (u === 'inc' ? (res*2.204).toFixed(2)+" lbs" : res.toFixed(2)+" kg");
+        }
     }
 
-    function saveToHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_final_db_v236') || '[]');
-        h.unshift({ n: document.getElementById('projName').value || "Project", d: new Date().toLocaleDateString(), v: document.getElementById('resL').innerText });
-        localStorage.setItem('gs_final_db_v236', JSON.stringify(h.slice(0, 10))); alert("Saved!");
-    }
-    
-    function showHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_final_db_v236') || '[]');
-        document.getElementById('hist-list').innerHTML = h.length ? h.map(i => `<div class="hist-item"><strong>${i.n}</strong><br><small>${i.d} - ${i.v}</small></div>`).join('') : "Empty";
-        go('historie');
+    function calcW() {
+        let b=parseFloat(document.getElementById('wb').value), h=parseFloat(document.getElementById('wh').value);
+        if(b&&h) {
+            let a = (b*h)/1000000;
+            let n = a * 500; // ~0.5 kN/m2
+            document.getElementById('resW').innerText = Math.round(n) + " N";
+            document.getElementById('resWkg').innerText = "~ " + Math.round(n/9.81) + " kg Last";
+        }
     }
 
-    function clearHistory() { if(confirm("Clear?")) { localStorage.removeItem('gs_final_db_v236'); showHistory(); } }
+    function calcH() {
+        let d=parseFloat(document.getElementById('hd').value), s=parseFloat(document.getElementById('hs').value), u=document.getElementById('uG').value;
+        if(d) document.getElementById('resH').innerText = ((Math.PI * d) + (2 * s) + 10).toFixed(1) + " " + u;
+    }
+
     function go(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); lucide.createIcons(); }
 
     function initApp() {
         const browserLang = navigator.language.split('-')[0];
-        document.getElementById('lG').value = i18n[browserLang] ? (browserLang==='jp'?'ja':browserLang) : 'en';
+        document.getElementById('lG').value = i18n[browserLang === 'jp' ? 'ja' : browserLang] ? (browserLang === 'jp' ? 'ja' : browserLang) : 'en';
         changeLang();
     }
 
