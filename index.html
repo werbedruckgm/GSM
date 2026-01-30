@@ -18,29 +18,32 @@
             width: var(--app-width); min-width: var(--app-width); background: var(--brand-navy);
             color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 35px;
             overflow: hidden; display: flex; flex-direction: column; margin: 10px;
-            position: relative; height: 780px;
+            position: relative; height: 800px;
         }
         @media (max-width: 380px) { .app-shell { width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
         
         #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.98); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
+        /* Navigation */
         .top-nav { display: flex; justify-content: space-between; padding: 20px 25px 5px; gap: 10px; }
         select { background: white; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; color: #333; outline: none; cursor: pointer; }
         
         .logo-area { text-align: center; padding: 10px 0 10px; }
-        .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 10px; }
-        .logo-area h1 { font-size: 1rem; letter-spacing: 0.5px; margin: 3px 0; font-weight: 700; color: white; }
+        .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 8px; }
+        .logo-area h1 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 3px 0; font-weight: 700; color: white; }
         
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
+        /* Menu Cards */
         .card { background: white; border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
         .icon { width: 40px; height: 40px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .card-text h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
         .card-text p { margin: 0; font-size: 0.65rem; color: #64748b; font-weight: 500; }
 
+        /* Compact Buttons */
         .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
         .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 12px; font-weight: 800; font-size: 0.75rem; }
 
@@ -55,9 +58,11 @@
         .res-num { font-size: 2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
         .res-info { font-size: 0.6rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
 
-        footer { text-align: center; padding: 15px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; }
-        .footer-links { margin-top: 5px; }
-        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; }
+        /* Footer Stack Order */
+        footer { text-align: center; padding: 20px; font-size: 0.65rem; color: #94a3b8; margin-top: auto; line-height: 1.4; }
+        footer strong { color: white; display: block; margin-bottom: 4px; font-size: 0.75rem; letter-spacing: 0.5px; }
+        footer .ver-line { display: block; margin-bottom: 8px; opacity: 0.8; }
+        .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -79,10 +84,10 @@
         <div class="logo-area"><img src="GS-Logo.jpg" id="logo-trigger" alt="GS"><h1 data-t="mainH">Werbetechniker-Tools</h1></div>
         <div class="menu-list">
             <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
-            <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Optimierer</h2><p data-t="n_p">Schnittpläne</p></div></div>
+            <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Optimierer</h2><p data-t="n_p">Schnittpläne & Verschnitt</p></div></div>
+            <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht prüfen</p></div></div>
+            <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik & Sicherheit</p></div></div>
             <div class="card" onclick="go('hohl')"><div class="icon"><i data-lucide="maximize"></i></div><div class="card-text"><h2 data-t="h_h">Hohlsaum-Profi</h2><p data-t="h_p">Banner-Zulage</p></div></div>
-            <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht</p></div></div>
-            <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik-Sicherheit</p></div></div>
         </div>
         <footer id="footer-content"></footer>
     </div>
@@ -138,8 +143,8 @@
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div class="logo-area"><h1 data-t="w_h">Windlast-Prüfer</h1></div>
         <div style="display:flex; gap:10px;">
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Breite</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Höhe</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>B</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>H</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
         </div>
         <div class="res-card"><span id="resW" class="res-num">0 N</span><span class="res-info" id="resWkg">Last bei Windstärke 9</span></div>
     </div>
@@ -155,7 +160,7 @@
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Stärke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Sicherheit", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", bt: "Verbinden", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Stärke", h_res: "Zugabe pro Seite", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
         en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter", r_d2: "Core", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "Allowance per side", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
     };
     ["fr", "es", "it", "nl", "pl", "da", "no", "ru", "ja"].forEach(l => { if(!i18n[l]) i18n[l] = i18n.en; });
@@ -165,9 +170,7 @@
     function updateAllUnits() {
         const u = document.getElementById('uG').value;
         const l = document.getElementById('lG').value;
-        document.querySelectorAll('[data-u]').forEach(el => {
-            el.innerText = `${getT(l, el.getAttribute('data-t'))} (${u})`;
-        });
+        document.querySelectorAll('[data-u]').forEach(el => { el.innerText = `${getT(l, el.getAttribute('data-t'))} (${u})`; });
         calcN(); calcR(); calcH(); calcG(); calcW();
     }
 
@@ -177,7 +180,14 @@
         updateAllUnits(); updateFooterLinks(l); lucide.createIcons();
     }
 
-    function updateFooterLinks(l) { document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.5.2 | 30.01.2026<br><div class="footer-links"><a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a></div>`; }
+    function updateFooterLinks(l) {
+        document.getElementById('footer-content').innerHTML = `
+            <strong>GRÖNER-SCHULZE GMBH</strong>
+            <span class="ver-line">V2.5.3 | 30.01.2026 | © 2026</span>
+            <div class="footer-links">
+                <a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a>
+            </div>`;
+    }
 
     function calcR() {
         let D=parseFloat(document.getElementById('rD').value), d=parseFloat(document.getElementById('rd').value), s=parseFloat(document.getElementById('rs').value);
@@ -196,8 +206,7 @@
     function calcG() {
         let b=parseFloat(document.getElementById('gb').value), h=parseFloat(document.getElementById('gh').value), s=parseFloat(document.getElementById('gs').value), dens=parseFloat(document.getElementById('gMat').value), u=document.getElementById('uG').value;
         if(b&&h&&s) {
-            let m2 = (b*h)/1000000;
-            let res = m2 * s * dens;
+            let res = ((b*h)/1000000) * s * dens;
             document.getElementById('resG').innerText = (u === 'inc' ? (res*2.204).toFixed(2)+" lbs" : res.toFixed(2)+" kg");
         }
     }
@@ -205,8 +214,7 @@
     function calcW() {
         let b=parseFloat(document.getElementById('wb').value), h=parseFloat(document.getElementById('wh').value);
         if(b&&h) {
-            let a = (b*h)/1000000;
-            let n = a * 500;
+            let n = ((b*h)/1000000) * 500;
             document.getElementById('resW').innerText = Math.round(n) + " N";
             document.getElementById('resWkg').innerText = "~ " + Math.round(n/9.81) + " kg Last";
         }
