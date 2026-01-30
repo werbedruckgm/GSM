@@ -8,56 +8,54 @@
     <style>
         :root {
             --brand-navy: #0E1D3A; 
-            --brand-navy-light: #162a50;
             --brand-cyan: #1DA1F2; 
-            --app-width: 330px;
+            --app-width: 320px; /* Schmaler Look wie im Screenshot */
         }
-        /* Bildschirmhintergrund Reinweiß für "schwebenden" Effekt */
+        /* Bildschirmhintergrund Weiß für schwebenden Effekt */
         html, body { 
             height: 100%; margin: 0; padding: 0; background: #ffffff; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
-        /* Die schwebende App-Shell */
+        /* Die schwebende App-Shell (Navy) */
         .app-shell {
-            width: var(--app-width); height: 94vh; max-height: 800px;
-            background: radial-gradient(circle at top, var(--brand-navy-light) 0%, var(--brand-navy) 100%);
-            color: white; display: flex; flex-direction: column; overflow: hidden;
-            border-radius: 45px; position: relative; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.25); /* Verstärkter Schatten für Floating-Effekt */
+            width: var(--app-width); height: 95vh; max-height: 750px;
+            background: var(--brand-navy); color: white; 
+            display: flex; flex-direction: column; overflow: hidden;
+            border-radius: 50px; position: relative; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
         }
-        @media (max-width: 380px) { .app-shell { width: 92vw; height: 96vh; border-radius: 40px; } }
+        @media (max-width: 380px) { .app-shell { width: 90vw; height: 96vh; border-radius: 45px; } }
 
-        /* Top Nav & Logo Proportions */
-        .top-nav { display: flex; justify-content: space-between; padding: 35px 20px 5px; }
+        /* Top Nav & Logo Proportionen */
+        .top-nav { display: flex; justify-content: space-between; padding: 35px 25px 5px; }
         select { background: white; border: none; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.65rem; color: var(--brand-navy); outline: none; }
         
         .logo-area { text-align: center; padding: 5px 0; }
-        .logo-area img { max-width: 90px; height: auto; }
-        .logo-area h1 { font-size: 0.85rem; letter-spacing: 0.8px; margin: 2px 0; font-weight: 800; text-transform: uppercase; }
+        .logo-area img { max-width: 90px; height: auto; margin-bottom: 2px; }
+        .logo-area h1 { font-size: 0.85rem; letter-spacing: 0.8px; margin: 0; font-weight: 800; text-transform: uppercase; }
         
-        .view { display: none; flex-direction: column; padding: 5px 15px; flex: 1; overflow-y: auto; }
+        .view { display: none; flex-direction: column; padding: 10px 15px; flex: 1; overflow-y: auto; }
         .view.active { display: flex; }
         
         /* Karten Proportionen exakt nach V2.1.5 */
-        .card { background: white; border-radius: 18px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--brand-navy); margin-bottom: 7px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.1s; }
+        .card { background: white; border-radius: 18px; padding: 10px 12px; display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--brand-navy); margin-bottom: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
         .icon { width: 34px; height: 34px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .icon i { width: 16px; height: 16px; }
+        .icon i { width: 18px; height: 18px; }
         .card-text h2 { margin: 0; font-size: 0.85rem; font-weight: 800; }
         .card-text p { margin: 0; font-size: 0.55rem; color: #64748b; font-weight: 600; }
 
-        /* Form Elements */
+        /* Input & Form */
         .input-box { margin-bottom: 6px; }
         .label { font-size: 0.5rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 2px; display: block; }
         input, select.in-view { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid transparent; font-size: 0.8rem; font-weight: 700; color: var(--brand-navy); background: white; outline: none; box-sizing: border-box; }
-        
-        input#cut { background: var(--brand-navy-light); color: white !important; border: 1px solid var(--brand-cyan); }
+        input#cut { background: #1a3a5a; color: white !important; border: 1px solid var(--brand-cyan); }
 
-        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 5px 0; color: var(--brand-navy); }
+        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 8px 0; color: var(--brand-navy); }
         .res-num { font-size: 1.8rem; font-weight: 900; color: var(--brand-cyan); display: block; }
         .res-info { font-size: 0.55rem; color: #718096; font-weight: 800; display: block; text-transform: uppercase; }
-        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 8px; font-weight: 800; font-size: 0.75rem; }
+        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 10px; font-weight: 800; font-size: 0.7rem; }
 
         /* VERTICAL STACKED FOOTER */
         footer { text-align: center; padding: 5px 15px 25px; font-size: 0.55rem; color: #94a3b8; margin-top: auto; display: flex !important; flex-direction: column !important; align-items: center !important; }
@@ -85,7 +83,7 @@
         <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2 data-t="r_h">Rollen-Meter</h2><p data-t="r_p">Längen berechnen</p></div></div>
         <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2 data-t="n_h">Nutzen-Rechner</h2><p data-t="n_p">Schnittpläne</p></div></div>
         <div class="card" onclick="go('gew')"><div class="icon"><i data-lucide="weight"></i></div><div class="card-text"><h2 data-t="g_h">Gewichts-Detektor</h2><p data-t="g_p">Materialgewicht</p></div></div>
-        <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik & Sicherheit</p></div></div>
+        <div class="card" onclick="go('wind')"><div class="icon"><i data-lucide="wind"></i></div><div class="card-text"><h2 data-t="w_h">Windlast-Prüfer</h2><p data-t="w_p">Statik-Check</p></div></div>
         <div class="card" onclick="go('hohl')"><div class="icon"><i data-lucide="maximize"></i></div><div class="card-text"><h2 data-t="h_h">Hohlsaum-Profi</h2><p data-t="h_p">Banner-Zulage</p></div></div>
     </main>
 
@@ -103,7 +101,7 @@
     function updateAllUnits() {
         const u = document.getElementById('uG').value, l = document.getElementById('lG').value;
         document.querySelectorAll('[data-u]').forEach(el => { el.innerText = `${getT(l, el.getAttribute('data-t'))} (${u})`; });
-        calcR(); calcG();
+        calcN(); calcR(); calcG();
     }
     function changeLang() {
         const l = document.getElementById('lG').value;
@@ -111,7 +109,7 @@
         updateAllUnits(); updateFooterLinks(l); lucide.createIcons();
     }
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong><div class="ver">V2.7.1 | 30.01.2026 | © 2026</div><div class="footer-links"><a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong><div class="ver">V2.7.2 | 30.01.2026 | © 2026</div><div class="footer-links"><a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a></div>`;
     }
     function calcR() {
         let D=parseFloat(document.getElementById('rD')?.value||0), d=parseFloat(document.getElementById('rd')?.value||0), s=parseFloat(document.getElementById('rs')?.value||0);
