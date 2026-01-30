@@ -18,7 +18,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
-        /* Schwebende Navy App-Shell */
+        /* Die schwebende App-Shell */
         .app-shell {
             width: var(--app-width); height: 95vh; max-height: 780px;
             background: radial-gradient(circle at top, var(--brand-navy-light) 0%, var(--brand-navy) 100%);
@@ -28,7 +28,7 @@
         }
         @media (max-width: 380px) { .app-shell { width: 90vw; height: 96vh; border-radius: 45px; } }
 
-        /* Header & Logo Proportionen */
+        /* Navigation & Logo Proportionen */
         .top-nav { display: flex; justify-content: space-between; padding: 35px 25px 5px; }
         select { background: white; border: none; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.65rem; color: var(--brand-navy); outline: none; cursor: pointer; }
         
@@ -47,7 +47,7 @@
         .card-text h2 { margin: 0; font-size: 0.85rem; font-weight: 800; }
         .card-text p { margin: 0; font-size: 0.55rem; color: #64748b; font-weight: 600; }
 
-        /* Input Styles */
+        /* Input & Form */
         .input-box { margin-bottom: 6px; }
         .label { font-size: 0.5rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 2px; display: block; }
         input, select.in-view { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid transparent; font-size: 0.8rem; font-weight: 700; color: var(--brand-navy); background: white; outline: none; box-sizing: border-box; }
@@ -130,8 +130,8 @@
     <div id="view-wind" class="view">
         <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span data-t="back">ZURÜCK</span></div>
         <div style="display:flex; gap:10px;">
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>Breite</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
-            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>Höhe</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_pb" data-u>B</span><input type="number" id="wb" value="2000" oninput="calcW()"></div>
+            <div class="input-box" style="flex:1;"><span class="label" data-t="n_ph" data-u>H</span><input type="number" id="wh" value="1000" oninput="calcW()"></div>
         </div>
         <div class="res-card"><span id="resW" class="res-num">0 N</span><span class="res-info">Windlast (Stärke 9)</span></div>
     </div>
@@ -148,8 +148,8 @@
 
 <script>
     const i18n = {
-        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Breite", n_ph: "Höhe", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Stärke", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
-        en: { mainH: "Signmaker Tools", back: "BACK", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter", r_d2: "Core", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
+        de: { mainH: "Werbetechniker-Tools", back: "ZURÜCK", r_h: "Rollen-Meter", r_p: "Längen berechnen", r_d1: "Durchmesser", r_d2: "Kern", r_s: "Stärke", res_l: "Berechnete Länge", n_h: "Nutzen-Rechner", n_p: "Schnittpläne", n_pb: "Platte B", n_ph: "Platte H", n_cut: "Schnittbreite", n_sb: "Schild B", n_sh: "Schild H", eff: "Effizienz", h_h: "Hohlsaum-Profi", h_p: "Banner-Zulage", h_d: "Stangendurchmesser", h_s: "Stärke", g_h: "Gewichts-Detektor", g_p: "Materialgewicht", g_res: "Gesamtgewicht", w_h: "Windlast-Prüfer", w_p: "Statik-Check", mat: "Material", imp: "Impressum", priv: "Datenschutz" },
+        en: { mainH: "Signmaker Tools", back: "BACK", r_h: "Roll Meter", r_p: "Calculate", r_d1: "Diameter", r_d2: "Core", r_s: "Thickness", res_l: "Length", n_h: "Nesting", n_p: "Layouts", n_pb: "Width", n_ph: "Height", n_cut: "Cut Width", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", h_h: "Hem Pro", h_p: "Banner Allowance", h_d: "Pole Diameter", h_s: "Thickness", h_res: "ALLOWANCE PER SIDE", g_h: "Weight Detector", g_p: "Mass calculate", g_res: "Total Weight", w_h: "Wind Load", w_p: "Static check", mat: "Material", imp: "Legal", priv: "Privacy" }
     };
     ["fr", "es", "it", "nl", "pl", "da", "no", "ru", "ja"].forEach(l => { if(!i18n[l]) i18n[l] = i18n.en; });
 
@@ -167,7 +167,7 @@
     function updateFooterLinks(l) {
         document.getElementById('footer-content').innerHTML = `
             <strong>GRÖNER-SCHULZE GMBH</strong>
-            <div class="ver">V2.7.4 | 30.01.2026 | © 2026</div>
+            <div class="ver">V2.7.5 | 30.01.2026 | © 2026</div>
             <div class="footer-links">
                 <a href="#">${getT(l,'imp')}</a> | <a href="#">${getT(l,'priv')}</a>
             </div>`;
