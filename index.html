@@ -52,23 +52,14 @@
             padding: 5px 8px; 
             border-radius: 8px; 
             border: 1px solid rgba(255,255,255,0.2); 
-            background: var(--field-light); /* Hintergrund auf weiß geändert */
-            color: var(--brand-navy); /* Schriftfarbe auf Dunkelblau gesetzt */
+            background: var(--field-light); 
+            color: var(--brand-navy); 
             font-weight: bold;
             outline: none; 
         }
 
-        .logo-container { 
-            text-align: center; 
-            margin-bottom: 0px; 
-            padding-top: 20px; 
-        }
-
-        .logo-container img { 
-            max-width: 90%; 
-            height: auto; 
-            max-height: 65px; 
-        }
+        .logo-container { text-align: center; margin-bottom: 0px; padding-top: 20px; }
+        .logo-container img { max-width: 90%; height: auto; max-height: 65px; }
 
         .app-title {
             color: white;
@@ -89,80 +80,62 @@
         }
 
         .input-group { margin-bottom: 15px; }
-
-        .label-with-icon { 
-            margin-bottom: 6px; 
-            font-size: 0.7em; 
-            color: var(--brand-cyan); 
-            text-transform: uppercase; 
-            font-weight: 700; 
-            letter-spacing: 0.8px;
-        }
+        .label-with-icon { margin-bottom: 6px; font-size: 0.7em; color: var(--brand-cyan); text-transform: uppercase; font-weight: 700; letter-spacing: 0.8px; }
 
         input { 
-            width: 100%; 
-            padding: 14px; 
-            border: none; 
-            border-radius: 14px; 
-            font-size: 18px; 
-            color: var(--brand-navy);
-            box-sizing: border-box; 
-            background: var(--field-light);
+            width: 100%; padding: 14px; border: none; border-radius: 14px; font-size: 18px; 
+            color: var(--brand-navy); box-sizing: border-box; background: var(--field-light);
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .result-box { 
-            margin-top: 20px; 
-            padding: 18px; 
-            background: var(--field-light);
-            border-radius: 20px; 
-            text-align: center; 
-            color: var(--brand-navy); 
+            margin-top: 20px; padding: 18px; background: var(--field-light);
+            border-radius: 20px; text-align: center; color: var(--brand-navy); 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .result-label {
-            font-size: 0.75em; 
-            text-transform: uppercase; 
-            font-weight: bold; 
-            color: #718096;
-        }
-
-        .result-val { 
-            font-size: 2.4em; 
-            font-weight: 800; 
-            display: block; 
-            color: var(--brand-cyan); 
-        }
+        .result-val { font-size: 2.4em; font-weight: 800; display: block; color: var(--brand-cyan); }
 
         .bt-button { 
-            background: var(--bt-blue); 
-            color: white; 
-            border: none; 
-            border-radius: 14px; 
-            padding: 16px; 
-            font-size: 0.85em; 
-            font-weight: bold; 
-            margin-top: 25px; 
-            width: 100%; 
-            cursor: pointer; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            background: var(--bt-blue); color: white; border: none; border-radius: 14px; 
+            padding: 16px; font-size: 0.85em; font-weight: bold; margin-top: 25px; 
+            width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: transform 0.1s;
         }
+        .bt-button:active { transform: scale(0.98); }
         
-        footer { 
-            margin-top: 20px; 
-            text-align: center; 
-            font-size: 0.65em; 
-            color: var(--text-gray); 
-        }
-        
+        footer { margin-top: 20px; text-align: center; font-size: 0.65em; color: var(--text-gray); }
         footer a { color: var(--brand-cyan); text-decoration: none; font-weight: bold; }
+
+        #easter-egg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(14, 29, 58, 0.98);
+            color: var(--brand-cyan);
+            padding: 25px;
+            border-radius: 24px;
+            font-weight: 800;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 2px solid var(--brand-cyan);
+            font-size: 1.1em;
+            width: 80%;
+            max-width: 300px;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn { 
+            from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; } 
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; } 
+        }
     </style>
 </head>
 <body>
+
+<div id="easter-egg">Powered by<br><span style="color:white; font-size: 0.85em;">Werbedruck-GM</span><br><span style="color:white">DER MEISTER</span></div>
 
 <div class="card">
     <div class="top-controls">
@@ -188,8 +161,7 @@
         <img src="GS-Logo.jpg" alt="Gröner-Schulze">
     </div>
     
-    <div class="app-title">Original Rollen-Meter</div>
-    
+    <div class="app-title" id="main_title">Original Rollen-Meter</div>
     <div class="divider"></div>
 
     <div class="input-group">
@@ -206,40 +178,76 @@
     </div>
 
     <div class="result-box">
-        <span id="lbl_res_text" class="result-label">Material auf der Rolle</span>
+        <span id="lbl_res_text" style="font-size: 0.75em; text-transform: uppercase; font-weight: bold; color: #718096;">Material auf der Rolle</span>
         <span class="result-val" id="res">0.00 m</span>
     </div>
 
-    <button class="bt-button" id="btn_bt" onclick="connectBluetooth()">
+    <button class="bt-button" id="btn_bt" onclick="handleBTClick()">
         <span>🔵</span> <span id="lbl_bt_text">MESS-GERÄT VERBINDEN</span>
     </button>
     
     <footer>
         <strong>Gröner-Schulze</strong><br>
-        <span id="lbl_footer">© 2024-2025 | V1.0 Multi-Unit & Bluetooth</span><br>
+        <span id="lbl_footer">© 2024-2026 | V1.1 Multi-Unit & Bluetooth</span><br>
         <div style="margin-top: 8px;">
-            <a href="https://www.groener-schulze.com/impressum" target="_blank" id="lbl_imp">Impressum</a> | 
-            <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank" id="lbl_priv">Datenschutz</a>
+            <a href="https://www.groener-schulze.com/impressum" target="_blank">Impressum</a> | 
+            <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">Datenschutz</a>
         </div>
     </footer>
 </div>
 
 <script>
-// (JavaScript Logik bleibt unverändert)
+let clickCount = 0;
+let clickTimer;
+
+function handleBTClick() {
+    clickCount++;
+    clearTimeout(clickTimer);
+    if (clickCount === 5) {
+        showMasterGreeting();
+        clickCount = 0;
+    } else {
+        clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
+        connectBluetooth(); 
+    }
+}
+
+function showMasterGreeting() {
+    const egg = document.getElementById('easter-egg');
+    egg.style.display = 'block';
+    setTimeout(() => { egg.style.display = 'none'; }, 3500);
+}
+
+async function connectBluetooth() {
+    if (!navigator.bluetooth) return;
+    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
+}
+
 const translations = {
-    de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN" },
-    en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER" }
+    de: { title: "Original Rollen-Meter", D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN" },
+    en: { title: "Original Roll Meter", D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER" },
+    fr: { title: "Mètre de Rouleau Original", D: "Diamètre du rouleau", d: "Diamètre du noyau", s: "Épaisseur du matériau", res: "Matériel sur le rouleau", bt: "CONNECTER L'APPAREIL" },
+    nl: { title: "Originele Rol-Meter", D: "Roldiameter", d: "Kerndiameter", s: "Materiaaldikte", res: "Materiaal op de rol", bt: "APPARAAT VERBINDEN" },
+    pl: { title: "Oryginalny Rol-Metr", D: "Średnica rolki", d: "Średnica rdzenia", s: "Grubość materiału", res: "Materiał na rolce", bt: "POŁĄCZ URZĄDZENIE" },
+    es: { title: "Metro de Rollo Original", D: "Diámetro del rollo", d: "Diámetro del núcleo", s: "Espesor del material", res: "Material en el rollo", bt: "CONECTAR APARATO" },
+    it: { title: "Metro per Rotoli Originale", D: "Diametro del rotolo", d: "Diametro dell'anima", s: "Spessore del materiale", res: "Materiale sul rotolo", bt: "COLLEGA DISPOSITIVO" },
+    hu: { title: "Eredeti Tekercsmérő", D: "Tekercs átmérő", d: "Mag átmérő", s: "Anyagvastagság", res: "Anyag a tekercsen", bt: "ESZKÖZ CSATLAKOZTATÁSA" },
+    ru: { title: "Оригинальный Рулономер", D: "Диаметр рулона", d: "Диаметр втулки", s: "Толщина материала", res: "Материал на рулоне", bt: "ПОДКЛЮЧИТЬ ПРИБОР" },
+    ja: { title: "オリジナル・ロールメーター", D: "ロール径", d: "芯径", s: "材料の厚み", res: "ロール上の材料", bt: "デバイスを接続する" }
 };
 
 function changeLang() {
     const l = document.getElementById('langPicker').value;
     const u = document.getElementById('unitPicker').value;
     const unitText = "(" + u + ")";
-    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['de'].D) + " " + unitText;
-    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['de'].d) + " " + unitText;
-    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['de'].s) + " " + unitText;
-    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['de'].res;
-    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['de'].bt;
+    const t = translations[l] || translations['de'];
+
+    document.getElementById('main_title').innerText = t.title;
+    document.getElementById('lbl_D').innerText = t.D + " " + unitText;
+    document.getElementById('lbl_d').innerText = t.d + " " + unitText;
+    document.getElementById('lbl_s').innerText = t.s + " " + unitText;
+    document.getElementById('lbl_res_text').innerText = t.res;
+    document.getElementById('lbl_bt_text').innerText = t.bt;
 }
 
 function calc() {
@@ -248,17 +256,36 @@ function calc() {
     let D = parseFloat(document.getElementById('D').value.replace(',', '.'));
     let d = parseFloat(document.getElementById('d').value.replace(',', '.'));
     let s = parseFloat(document.getElementById('s').value.replace(',', '.'));
+    
     if(D && d && s && D > d) {
         if(unit === "inc") { D *= 25.4; d *= 25.4; s *= 25.4; }
         const L = (Math.PI * (Math.pow(D, 2) - Math.pow(d, 2))) / (4000 * s);
         document.getElementById('res').innerText = L.toFixed(2) + " m";
-    } else { document.getElementById('res').innerText = "0.00 m"; }
+    } else { 
+        document.getElementById('res').innerText = "0.00 m"; 
+    }
 }
-async function connectBluetooth() {
-    if (!navigator.bluetooth) { alert("Bluetooth nicht unterstützt."); return; }
-    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
+
+// NEU: Erkennt die Browser-Sprache beim Start
+function initApp() {
+    const userLang = navigator.language.substring(0, 2).toLowerCase();
+    const langPicker = document.getElementById('langPicker');
+    
+    // Prüfen, ob die Sprache im Dropdown existiert
+    let found = false;
+    for (let i = 0; i < langPicker.options.length; i++) {
+        if (langPicker.options[i].value === userLang) {
+            langPicker.selectedIndex = i;
+            found = true;
+            break;
+        }
+    }
+    
+    calc();
 }
-calc();
+
+// Startet die Initialisierung
+initApp();
 </script>
 </body>
 </html>
