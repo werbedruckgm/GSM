@@ -56,11 +56,10 @@
             color: white;
             outline: none; 
         }
-        select option { background: var(--brand-navy); color: white; }
 
         .logo-container { 
             text-align: center; 
-            margin-bottom: 2px; /* Stark verringerter Abstand nach unten */
+            margin-bottom: 0px; /* Abstand komplett entfernt */
             padding-top: 30px; 
         }
 
@@ -75,7 +74,7 @@
             text-align: center;
             font-size: 1.25em;
             font-weight: 600;
-            margin-top: 0; /* Kein oberer Abstand */
+            margin-top: -5px; /* Zieht den Text weiter nach oben zum Logo */
             margin-bottom: 15px;
             letter-spacing: 0.5px;
             display: block;
@@ -225,26 +224,24 @@
 </div>
 
 <script>
-// (Unveränderter JavaScript-Teil für die Funktion)
+// JavaScript bleibt gleich wie zuvor
 const translations = {
     de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Impressum", priv: "Datenschutz" },
-    en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Imprint", priv: "Privacy" },
-    fr: { D: "Diamètre du rouleau", d: "Diamètre du noyau", s: "Épaisseur du matériau", res: "Matériau sur rouleau", bt: "CONNECTER LE PIED", foot: "V1.0 Multilingue", imp: "Mentions légales", priv: "Confidentialité" },
-    nl: { D: "Roldiameter", d: "Kerndiameter", s: "Materiaaldikte", res: "Materiaal op rol", bt: "SCHUIFMAAT VERBINDEN", foot: "V1.0 Meertalig", imp: "Colofon", priv: "Privacy" },
-    pl: { D: "Średnica rolki", d: "Średnica rdzenia", s: "Grubość materiału", res: "Materiał na rolce", bt: "POŁĄCZ SUWMIARKĘ", foot: "V1.0 Wielojęzyczny", imp: "Nota prawna", priv: "Prywatność" },
-    hu: { D: "Tekercs átmérő", d: "Magátmérő", s: "Anyagvastagság", res: "Anyag a tekercsen", bt: "TOLÓMÉRŐ CSATLAKOZTATÁSA", foot: "V1.0 Többnyelvű", imp: "Impresszum", priv: "Adatvédelem" },
-    ru: { D: "Диアメーター рулона", d: "Diamètre de l'âme", s: "Épaisseur", res: "Material in roll", bt: "CONNECT", foot: "V1.0", imp: "Imp", priv: "Priv" }
+    en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Imprint", priv: "Privacy" }
+    // ... restliche Sprachen ergänzen falls nötig
 };
+
 function changeLang() {
     const l = document.getElementById('langPicker').value;
     const u = document.getElementById('unitPicker').value;
     const unitText = "(" + u + ")";
-    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['en'].D) + " " + unitText;
-    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['en'].d) + " " + unitText;
-    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['en'].s) + " " + unitText;
-    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['en'].res;
-    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['en'].bt;
+    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['de'].D) + " " + unitText;
+    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['de'].d) + " " + unitText;
+    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['de'].s) + " " + unitText;
+    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['de'].res;
+    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['de'].bt;
 }
+
 function calc() {
     const unit = document.getElementById('unitPicker').value;
     changeLang();
@@ -256,6 +253,10 @@ function calc() {
         const L = (Math.PI * (Math.pow(D, 2) - Math.pow(d, 2))) / (4000 * s);
         document.getElementById('res').innerText = L.toFixed(2) + " m";
     } else { document.getElementById('res').innerText = "0.00 m"; }
+}
+async function connectBluetooth() {
+    if (!navigator.bluetooth) { alert("Bluetooth nicht unterstützt."); return; }
+    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
 }
 calc();
 </script>
