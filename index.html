@@ -26,7 +26,7 @@
         .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
         .top-nav { display: flex; justify-content: space-between; padding: 20px 25px 5px; gap: 10px; }
-        select { background: white; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; color: #333; outline: none; }
+        select { background: white; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.7rem; color: #333; outline: none; }
         
         .logo-area { text-align: center; padding: 10px 0 15px; }
         .logo-area img { max-width: 130px; height: auto; cursor: pointer; margin-bottom: 10px; }
@@ -35,26 +35,22 @@
         .view { display: none; flex-direction: column; padding: 15px 25px; box-sizing: border-box; height: 100%; overflow-y: auto; }
         .view.active { display: flex; }
         
-        /* Menu Cards (Screenshot 1 Look) */
         .card { background: white; border-radius: 20px; padding: 14px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: var(--brand-navy); margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.1s; }
         .card:active { transform: scale(0.97); }
         .icon { width: 44px; height: 44px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .card-text h2 { margin: 0; font-size: 1rem; font-weight: 700; }
         .card-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 500; }
 
-        /* Compact Buttons */
         .action-btn, .bt-btn { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; width: 100%; text-transform: uppercase; margin-bottom: 10px; }
         .back-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; padding-bottom: 15px; font-weight: 800; font-size: 0.75rem; }
 
         .input-box { margin-bottom: 10px; }
         .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
         
-        /* Standard Inputs */
         input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.95rem; font-weight: bold; color: var(--brand-navy); background: white; box-sizing: border-box; outline: none; }
         
-        /* FIX: Schnittbreite Lesbarkeit (Weiß auf Dunkelblau/Cyan Mix) */
-        input#cut { background: rgba(255, 255, 255, 0.15); color: white !important; border: 1px solid var(--brand-cyan); }
-        input#cut:focus { background: rgba(255, 255, 255, 0.25); }
+        /* Korrektur für Schnittbreite: Weisse Schrift auf dunklem Cyan-Grund */
+        input#cut { background: #1a3a5a; color: #ffffff !important; border: 1px solid var(--brand-cyan); }
 
         .res-card { background: white; padding: 15px; border-radius: 20px; text-align: center; margin: 10px 0; color: var(--brand-navy); }
         .res-num { font-size: 2.2rem; font-weight: 900; color: var(--brand-cyan); display: block; }
@@ -64,6 +60,8 @@
         footer strong { color: white; display: block; margin-bottom: 4px; }
         .footer-links { margin-top: 8px; }
         .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 5px; }
+
+        .hist-item { background: rgba(255,255,255,0.1); padding: 12px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -157,13 +155,13 @@
         en: { mainH: "Signmaker Tools", back: "BACK", bt: "Connect", r_h: "Roll Meter", r_p: "Calculate length", r_d1: "Roll Diameter (D)", r_d2: "Core (d)", r_s: "Thickness", res_l: "Calculated length", n_h: "Nesting Optimizer", n_p: "Layout & Waste", n_pb: "Sheet W", n_ph: "Sheet H", n_cut: "Cut Width (mm)", n_sb: "Sign W", n_sh: "Sign H", eff: "Efficiency", l_h: "LED Pro", l_p: "Spacing & Lighting", l_z: "Depth (Z)", l_res: "Max. Spacing", hist: "History", hist_p: "Saved Projects", proj: "Project Name", proj_p: "Customer...", save_btn: "Save", clear_hist: "Clear History", imp: "Legal Notice", priv: "Privacy" },
         ru: { mainH: "Инструменты", back: "НАЗАД", bt: "Подключить", r_h: "Рулонный метр", r_p: "Рассчитать длину", r_d1: "Диаметр рулона (D)", r_d2: "Диаметр втулки (d)", r_s: "Толщина (мм)", res_l: "Рассчитанная длина", n_h: "Раскрой", n_p: "Макет и отходы", n_pb: "Лист Ширина", n_ph: "Лист Высота", n_cut: "Ширина реза (мм)", n_sb: "Вывеска Ш", n_sh: "Вывеска В", eff: "Эффективность", l_h: "LED Профи", l_p: "Интервал и свет", l_z: "Глубина (Z)", l_res: "Макс. интервал", hist: "История", hist_p: "Сохраненные проекты", proj: "Название проекта", proj_p: "Клиент...", save_btn: "Сохранить", clear_hist: "Очистить историю", imp: "Контакты", priv: "Данные" },
         ja: { mainH: "看板製作ツール", back: "戻る", bt: "接続", r_h: "ロールメーター", r_p: "長さを計算する", r_d1: "ロール直径 (D)", r_d2: "芯の直径 (d)", r_s: "厚み (mm)", res_l: "計算された長さ", n_h: "ネスティング", n_p: "レイアウトと廃棄物", n_pb: "プレート幅", n_ph: "プレート高さ", n_cut: "カット幅 (mm)", n_sb: "サイン幅", n_sh: "サイン高さ", eff: "効率", l_h: "LEDプロ", l_p: "間隔と照明", l_z: "ボックスの深さ (Z)", l_res: "最大間隔", hist: "履歴", hist_p: "プロジェクト", proj: "プロジェクト名", proj_p: "顧客...", save_btn: "保存", clear_hist: "履歴を削除", imp: "会社概要", priv: "プライバシー" },
-        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connecter", r_h: "Mètre Rouleau", r_p: "Calculer", n_h: "Optimiseur", l_h: "LED Pro", l_res: "Distance Max", hist: "Historique", imp: "Mentions", priv: "Confidentialité" },
-        es: { mainH: "Herramientas Rótulo", back: "VOLVER", bt: "Conectar", r_h: "Metro Rollo", r_p: "Calcular", n_h: "Optimización", l_h: "LED Pro", l_res: "Distancia Max", hist: "Historial", imp: "Aviso", priv: "Privacidad" },
-        it: { mainH: "Strumenti Insegne", back: "INDIETRO", bt: "Connetti", r_h: "Metro Rullo", r_p: "Calcola", n_h: "Ottimizzazione", l_h: "LED Pro", l_res: "Distanza Max", hist: "Cronologia", imp: "Note", priv: "Privacy" },
-        nl: { mainH: "Signmaker Tools", back: "TERUG", bt: "Verbinden", r_h: "Rolmeter", r_p: "Berekenen", n_h: "Optimalisatie", l_h: "LED Pro", l_res: "Afstand Max", hist: "Historie", imp: "Colofon", priv: "Privacy" },
-        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", bt: "Połącz", r_h: "Miernik Rolek", r_p: "Oblicz", n_h: "Optymalizator", l_h: "LED Pro", l_res: "Dystans Max", hist: "Historia", imp: "Nota", priv: "Prywatność" },
-        da: { mainH: "Skiltetekniker", back: "TILBAGE", bt: "Forbind", r_h: "Rulle-meter", r_p: "Beregn", n_h: "Optimering", l_h: "LED Pro", l_res: "Afstand Max", hist: "Historik", imp: "Impressum", priv: "Privatliv" },
-        no: { mainH: "Skiltmaker", back: "TILBAKE", bt: "Koble til", r_h: "Rullemåler", r_p: "Beregn", n_h: "Optimering", l_h: "LED Pro", l_res: "Avstand Max", hist: "Historikk", imp: "Juridisk", priv: "Personvern" }
+        fr: { mainH: "Outils Signalétique", back: "RETOUR", bt: "Connecter", r_h: "Mètre Rouleau", r_p: "Calculer longueur", r_d1: "Diamètre (D)", r_d2: "Noyau (d)", r_s: "Épaisseur", res_l: "Longueur", n_h: "Optimiseur", n_p: "Mises en page", n_pb: "Plaque L", n_ph: "Plaque H", n_cut: "Coupe (mm)", n_sb: "Panneau L", n_sh: "Panneau H", eff: "Efficacité", l_h: "LED Pro", l_p: "Plan", l_z: "Profondeur", l_res: "Distance Max", hist: "Historique", hist_p: "Projets", proj: "Nom Projet", proj_p: "Client...", save_btn: "Sauver", clear_hist: "Effacer", imp: "Mentions", priv: "Privatité" },
+        es: { mainH: "Herramientas Rótulo", back: "VOLVER", bt: "Conectar", r_h: "Metro Rollo", r_p: "Calcular longitud", r_d1: "Diámetro", r_d2: "Núcleo", r_s: "Espesor", res_l: "Longitud", n_h: "Optimización", n_p: "Diseños", n_pb: "Placa A", n_ph: "Placa H", n_cut: "Corte (mm)", n_sb: "Cartel A", n_sh: "Cartel H", eff: "Eficiencia", l_h: "LED Pro", l_p: "Plan", l_z: "Profundidad", l_res: "Distancia Max", hist: "Historial", hist_p: "Proyectos", proj: "Proyecto", proj_p: "Cliente...", save_btn: "Guardar", clear_hist: "Borrar", imp: "Aviso", priv: "Privacidad" },
+        it: { mainH: "Strumenti Insegne", back: "INDIETRO", bt: "Connetti", r_h: "Metro Rullo", r_p: "Calcola", r_d1: "Diametro", r_d2: "Anima", r_s: "Spessore", res_l: "Lunghezza", n_h: "Ottimizzazione", n_p: "Layout", n_pb: "Lastra L", n_ph: "Lastra H", n_cut: "Taglio (mm)", n_sb: "Insegna L", n_sh: "Insegna A", eff: "Efficienza", l_h: "LED Pro", l_p: "Piano", l_z: "Profondità", l_res: "Distanza Max", hist: "Cronologia", hist_p: "Progetti", proj: "Progetto", proj_p: "Cliente...", save_btn: "Salva", clear_hist: "Cancella", imp: "Note", priv: "Privacy" },
+        nl: { mainH: "Signmaker Tools", back: "TERUG", bt: "Verbinden", r_h: "Rolmeter", r_p: "Berekenen", r_d1: "Diameter", r_d2: "Kern", r_s: "Dikte", res_l: "Lengte", n_h: "Optimalisatie", n_p: "Layouts", n_pb: "Plaat B", n_ph: "Plaat H", n_cut: "Snijbreedte", n_sb: "Bord B", n_sh: "Bord H", eff: "Efficiëntie", l_h: "LED Pro", l_p: "Planning", l_z: "Diepte", l_res: "Afstand", hist: "Historie", hist_p: "Projecten", proj: "Project", proj_p: "Klant...", save_btn: "Opslaan", clear_hist: "Wissen", imp: "Colofon", priv: "Privacy" },
+        pl: { mainH: "Narzędzia Reklamowe", back: "POWRÓT", bt: "Połącz", r_h: "Miernik Rolek", r_p: "Oblicz długość", r_d1: "Średnica", r_d2: "Rdzeń", r_s: "Grubość", res_l: "Długość", n_h: "Optymalizator", n_p: "Układy", n_pb: "Płyta S", n_ph: "Płyta W", n_cut: "Szer. cięcia", n_sb: "Szyld S", n_sh: "Szyld W", eff: "Wydajność", l_h: "LED Pro", l_p: "Planowanie", l_z: "Głębokość", l_res: "Dystans Max", hist: "Historia", hist_p: "Projekty", proj: "Projekt", proj_p: "Klient...", save_btn: "Zapisz", clear_hist: "Usuń", imp: "Nota", priv: "Prywatność" },
+        da: { mainH: "Skiltetekniker", back: "TILBAGE", bt: "Forbind", r_h: "Rulle-meter", r_p: "Beregn", r_d1: "Diameter", r_d2: "Kerne", r_s: "Tykkelse", res_l: "Længde", n_h: "Optimering", n_p: "Layouts", n_pb: "Plade B", n_ph: "Plade H", n_cut: "Skærebredde", n_sb: "Skilt B", n_sh: "Skilt H", eff: "Effektivitet", l_h: "LED Pro", l_p: "Plan", l_z: "Dybde", l_res: "Afstand", hist: "Historik", hist_p: "Projekter", proj: "Projekt", proj_p: "Kunde...", save_btn: "Gem", clear_hist: "Slet", imp: "Impressum", priv: "Privatliv" },
+        no: { mainH: "Skiltmaker", back: "TILBAKE", bt: "Koble til", r_h: "Rullemåler", r_p: "Beregn", r_d1: "Diameter", r_d2: "Kjerne", r_s: "Tykkelse", res_l: "LENGDE", n_h: "Optimering", n_p: "Layouts", n_pb: "Plate B", n_ph: "Plate H", n_cut: "Skjærebredde", n_sb: "Skilt B", n_sh: "Skilt H", eff: "Effektivitet", l_h: "LED Pro", l_p: "Plan", l_z: "Dybde", l_res: "AVSTAND", hist: "Historikk", hist_p: "Prosjekter", proj: "Prosjekt", proj_p: "Kunde...", save_btn: "Lagre", clear_hist: "Slett", imp: "Juridisk", priv: "Personvern" }
     };
 
     function getT(l, k) { return (i18n[l] && i18n[l][k]) ? i18n[l][k] : (i18n['en'][k] || k); }
@@ -174,16 +172,17 @@
         document.querySelectorAll('[data-p]').forEach(el => { el.placeholder = getT(l, el.getAttribute('data-p')); });
         updateFooterLinks(l);
         calcN(); calcR(); calcL();
-        lucide.createIcons(); // Fix für verschwindende Icons bei Sprachwechsel
+        lucide.createIcons(); // Erzwingt das Neuzeichnen der Icons bei Sprachwechsel
     }
 
     function updateFooterLinks(l) {
-        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.3.2 | 30.01.2026 | © 2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
+        document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.3.3 | 30.01.2026 | © 2026<br><div class="footer-links"><a href="https://www.groener-schulze.com/impressum" target="_blank">${getT(l,'imp')}</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">${getT(l,'priv')}</a></div>`;
     }
 
     function initApp() {
         const browserLang = navigator.language.split('-')[0];
-        document.getElementById('lG').value = i18n[browserLang] ? (browserLang==='jp'?'ja':browserLang) : 'en';
+        const langMap = { jp: 'ja' };
+        document.getElementById('lG').value = i18n[langMap[browserLang] || browserLang] ? (langMap[browserLang] || browserLang) : 'en';
         changeLang();
     }
 
@@ -207,19 +206,24 @@
     }
 
     function saveToHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_final_db') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_master_db') || '[]');
         h.unshift({ n: document.getElementById('projName').value || "Project", d: new Date().toLocaleDateString(), v: document.getElementById('resL').innerText });
-        localStorage.setItem('gs_final_db', JSON.stringify(h.slice(0, 10))); alert("Saved!");
+        localStorage.setItem('gs_master_db', JSON.stringify(h.slice(0, 10))); alert("Saved!");
     }
     
     function showHistory() {
-        let h = JSON.parse(localStorage.getItem('gs_final_db') || '[]');
+        let h = JSON.parse(localStorage.getItem('gs_master_db') || '[]');
         document.getElementById('hist-list').innerHTML = h.length ? h.map(i => `<div class="hist-item"><strong>${i.n}</strong><br><small>${i.d} - ${i.v}</small></div>`).join('') : "Empty";
         go('historie');
     }
 
-    function clearHistory() { if(confirm("Clear?")) { localStorage.removeItem('gs_final_db'); showHistory(); } }
-    function go(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); lucide.createIcons(); }
+    function clearHistory() { if(confirm("Historie löschen?")) { localStorage.removeItem('gs_master_db'); showHistory(); } }
+    
+    function go(v) { 
+        document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); 
+        document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); 
+        lucide.createIcons(); // Fix für verschwindende Icons bei View-Wechsel
+    }
 
     let clks = 0, tmr;
     document.getElementById('logo-trigger').addEventListener('click', () => {
