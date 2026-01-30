@@ -3,289 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Original Rollen-Meter | Gröner-Schulze</title>
+    <title>Werbetechniker-Tools | GRÖNER-SCHULZE GMBH</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --brand-navy: #0E1D3A;
-            --brand-cyan: #1DA1F2;
-            --bg-page: #ffffff;      
-            --card-bg: #0E1D3A;      
-            --field-light: #ffffff;  
-            --text-gray: #a0aec0;
-            --bt-blue: #007AFF;
+            --brand-navy: #0E1D3A; --brand-cyan: #1DA1F2; --bg-page: #f0f2f5; --app-width: 360px;
         }
-
         html, body { 
-            height: 100%; 
-            overflow: hidden; 
-            background: var(--bg-page); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin: 0; 
+            height: 100%; margin: 0; background: var(--bg-page); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex; justify-content: center; align-items: center; 
         }
-
-        .card { 
-            background: var(--brand-navy); 
-            padding: 25px; 
-            border-radius: 28px; 
-            box-shadow: 0 20px 50px rgba(14, 29, 58, 0.3); 
-            width: 88%; 
-            max-width: 360px; 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            position: relative; 
+        .app-shell {
+            width: var(--app-width); min-width: var(--app-width); background: var(--brand-navy);
+            color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 30px;
+            overflow: hidden; display: flex; flex-direction: column; margin: 10px;
+            position: relative; height: 760px;
         }
+        @media (max-width: 380px) { .app-shell { width: 100vw; height: 100vh; border-radius: 0; margin: 0; } }
         
-        .top-controls { 
-            position: absolute; 
-            top: 10px; 
-            left: 15px; 
-            right: 15px; 
-            display: flex; 
-            justify-content: space-between; 
-            z-index: 10;
-        }
+        #egg-popup { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(14, 29, 58, 0.95); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
+        .egg-content { background: var(--brand-navy); border: 2px solid var(--brand-cyan); padding: 30px 20px; border-radius: 20px; text-align: center; width: 80%; }
 
-        select { 
-            font-size: 0.75em; 
-            padding: 5px 8px; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            background: var(--field-light); 
-            color: var(--brand-navy); 
-            font-weight: bold;
-            outline: none; 
-        }
-
-        .logo-container { text-align: center; margin-bottom: 0px; padding-top: 20px; }
-        .logo-container img { max-width: 90%; height: auto; max-height: 65px; }
-
-        .app-title {
-            color: white;
-            text-align: center;
-            font-size: 1.15em;
-            font-weight: 600;
-            margin-top: -5px; 
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            display: block;
-        }
-
-        .divider { 
-            height: 3px; 
-            background: linear-gradient(90deg, transparent 0%, var(--brand-cyan) 50%, transparent 100%); 
-            width: 100%; 
-            margin-bottom: 25px; 
-        }
-
-        .input-group { margin-bottom: 15px; }
-        .label-with-icon { margin-bottom: 6px; font-size: 0.7em; color: var(--brand-cyan); text-transform: uppercase; font-weight: 700; letter-spacing: 0.8px; }
-
-        input { 
-            width: 100%; padding: 14px; border: none; border-radius: 14px; font-size: 18px; 
-            color: var(--brand-navy); box-sizing: border-box; background: var(--field-light);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .result-box { 
-            margin-top: 20px; padding: 18px; background: var(--field-light);
-            border-radius: 20px; text-align: center; color: var(--brand-navy); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .result-val { font-size: 2.4em; font-weight: 800; display: block; color: var(--brand-cyan); }
-
-        .bt-button { 
-            background: var(--bt-blue); color: white; border: none; border-radius: 14px; 
-            padding: 16px; font-size: 0.85em; font-weight: bold; margin-top: 25px; 
-            width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-            transition: transform 0.1s;
-        }
-        .bt-button:active { transform: scale(0.98); }
+        .view { display: none; flex-direction: column; padding: 15px 20px; box-sizing: border-box; height: 100%; overflow-y: auto; }
+        .view.active { display: flex; }
+        .top-nav { display: flex; justify-content: space-between; padding: 15px 20px 5px; gap: 8px; }
+        select { background: white; border: none; padding: 8px; border-radius: 6px; font-weight: bold; font-size: 0.75rem; color: var(--brand-navy); outline: none; width: 100%; margin-bottom: 10px; }
         
-        footer { margin-top: 20px; text-align: center; font-size: 0.65em; color: var(--text-gray); }
-        footer a { color: var(--brand-cyan); text-decoration: none; font-weight: bold; }
-
-        #easter-egg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(14, 29, 58, 0.98);
-            color: var(--brand-cyan);
-            padding: 25px;
-            border-radius: 24px;
-            font-weight: 800;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            border: 2px solid var(--brand-cyan);
-            font-size: 1.1em;
-            width: 80%;
-            max-width: 300px;
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes popIn { 
-            from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; } 
-            to { transform: translate(-50%, -50%) scale(1); opacity: 1; } 
-        }
+        .logo-area { text-align: center; padding: 5px 0 10px; }
+        .logo-area img { max-width: 130px; height: auto; cursor: pointer; }
+        .logo-area h1 { font-size: 0.85rem; letter-spacing: 1.5px; margin: 5px 0; font-weight: 800; }
+        
+        .card { background: white; border-radius: 15px; padding: 10px; display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--brand-navy); margin-bottom: 12px; }
+        .icon { width: 38px; height: 38px; background: var(--brand-navy); color: var(--brand-cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        
+        .input-box { margin-bottom: 8px; }
+        .label { font-size: 0.6rem; color: var(--brand-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 3px; display: block; }
+        input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid transparent; font-size: 0.9rem; font-weight: bold; color: var(--brand-navy); box-sizing: border-box; outline: none; }
+        
+        .res-card { background: white; padding: 12px; border-radius: 18px; text-align: center; margin: 8px 0; color: var(--brand-navy); }
+        .res-num { font-size: 1.8rem; font-weight: 900; color: var(--brand-cyan); display: block; }
+        .res-info { font-size: 0.6rem; color: #718096; font-weight: bold; display: block; }
+        
+        .action-btn { background: #ff9900; color: black; border: none; padding: 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; text-transform: uppercase; }
+        .list-btn { background: var(--brand-cyan); color: white; }
+        .wa-btn { background: #25D366; color: white; }
+        .hist-btn { background: #64748b; color: white; }
+        
+        .spec-box { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 15px; font-size: 0.75rem; border: 1px solid rgba(29, 161, 242, 0.3); margin-top: 10px; }
+        .spec-line { display: flex; justify-content: space-between; margin-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2px; }
+        
+        .back-btn { color: white; display: flex; align-items: center; gap: 4px; cursor: pointer; padding-bottom: 15px; font-weight: bold; font-size: 0.75rem; }
+        footer { text-align: center; padding: 15px; font-size: 0.6rem; color: #94a3b8; margin-top: auto; }
+        
+        .order-list { background: white; color: var(--brand-navy); padding: 15px; border-radius: 15px; font-size: 0.8rem; margin-top: 10px; }
+        .order-item { border-bottom: 1px solid #eee; padding: 8px 0; display: flex; justify-content: space-between; }
+        .hist-item { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px; margin-bottom: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div id="easter-egg">Powered by<br><span style="color:white; font-size: 0.85em;">Werbedruck-GM</span><br><span style="color:white">DER MEISTER</span></div>
+<div class="app-shell">
+    <div id="egg-popup"><div class="egg-content">Powered by<br><strong>Werbedruck-GM</strong><br>DER MEISTER</div></div>
 
-<div class="card">
-    <div class="top-controls">
-        <select id="unitPicker" onchange="calc()">
-            <option value="mm">mm</option>
-            <option value="inc">inch</option>
-        </select>
-        <select id="langPicker" onchange="changeLang()">
-            <option value="de">DE</option>
-            <option value="en">EN</option>
-            <option value="fr">FR</option>
-            <option value="nl">NL</option>
-            <option value="pl">PL</option>
-            <option value="es">ES</option>
-            <option value="it">IT</option>
-            <option value="hu">HU</option>
-            <option value="ru">RU</option>
-            <option value="ja">JA</option>
-        </select>
+    <div class="top-nav">
+        <select id="uG" style="width: auto;" onchange="updateAllUnits()"><option value="mm">mm</option><option value="inc">inch</option></select>
+        <select id="lG" style="width: auto;" onchange="changeLang()"></select>
     </div>
 
-    <div class="logo-container">
-        <img src="GS-Logo.jpg" alt="Gröner-Schulze">
-    </div>
-    
-    <div class="app-title" id="main_title">Original Rollen-Meter</div>
-    <div class="divider"></div>
-
-    <div class="input-group">
-        <div class="label-with-icon" id="lbl_D">Rollendurchmesser</div>
-        <input type="number" id="D" inputmode="decimal" placeholder="..." oninput="calc()" autofocus>
-    </div>
-    <div class="input-group">
-        <div class="label-with-icon" id="lbl_d">Kerndurchmesser</div>
-        <input type="number" id="d" inputmode="decimal" value="76" oninput="calc()">
-    </div>
-    <div class="input-group">
-        <div class="label-with-icon" id="lbl_s">Materialstärke</div>
-        <input type="number" id="s" inputmode="decimal" value="0.15" step="0.01" oninput="calc()">
-    </div>
-
-    <div class="result-box">
-        <span id="lbl_res_text" style="font-size: 0.75em; text-transform: uppercase; font-weight: bold; color: #718096;">Material auf der Rolle</span>
-        <span class="result-val" id="res">0.00 m</span>
-    </div>
-
-    <button class="bt-button" id="btn_bt" onclick="handleBTClick()">
-        <span>🔵</span> <span id="lbl_bt_text">MESS-GERÄT VERBINDEN</span>
-    </button>
-    
-    <footer>
-        <strong>Gröner-Schulze</strong><br>
-        <span id="lbl_footer">© 2024-2026 | V1.1 Multi-Unit & Bluetooth</span><br>
-        <div style="margin-top: 8px;">
-            <a href="https://www.groener-schulze.com/impressum" target="_blank">Impressum</a> | 
-            <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">Datenschutz</a>
+    <div id="main" class="view active">
+        <div class="logo-area"><img src="GS-Logo.jpg" id="logo-trigger"><h1 data-t="mainH">Werbetechniker-Tools</h1></div>
+        <div class="menu-list">
+            <div class="card" onclick="go('rollen')"><div class="icon"><i data-lucide="ruler"></i></div><div class="card-text"><h2>Rollen-Meter</h2><p>Längen berechnen</p></div></div>
+            <div class="card" onclick="go('nutzen')"><div class="icon"><i data-lucide="layout-grid"></i></div><div class="card-text"><h2>Nutzen-Optimierer</h2><p>Schnittpläne</p></div></div>
+            <div class="card" onclick="go('led')"><div class="icon"><i data-lucide="lightbulb"></i></div><div class="card-text"><h2>LED-Profi</h2><p>Licht-Planung</p></div></div>
+            <div class="card" onclick="showHistory()"><div class="icon" style="color:#fbbf24;"><i data-lucide="history"></i></div><div class="card-text"><h2>Historie</h2><p>Gespeicherte Projekte</p></div></div>
         </div>
-    </footer>
+        <footer id="footer-content"></footer>
+    </div>
+
+    <div id="view-led" class="view">
+        <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span>ZURÜCK</span></div>
+        <div class="logo-area"><h1>LED-Rechner</h1></div>
+        <div class="input-box"><span class="label">Projektname</span><input type="text" id="projName" placeholder="Kunde / Auftrag"></div>
+        <div class="sub-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div class="input-box"><span class="label">Breite (mm)</span><input type="number" id="lkw" value="1000" oninput="calcL()"></div>
+            <div class="input-box"><span class="label">Höhe (mm)</span><input type="number" id="lkh" value="500" oninput="calcL()"></div>
+        </div>
+        <div class="input-box"><span class="label">Tiefe (mm)</span><input type="number" id="lz" value="100" oninput="calcL()"></div>
+
+        <select id="lSelect" onchange="applyModule()">
+            <optgroup label="GS Professional"><option value="gs_eco">GS-Eco 0.72W</option><option value="gs_pow">GS-Power 1.20W</option></optgroup>
+            <optgroup label="Amazon Bestseller"><option value="amz_std">AMZ Standard 0.72W</option><option value="amz_inj">AMZ Inject 1.50W</option></optgroup>
+        </select>
+
+        <div class="res-card"><span class="res-info">MAX. ABSTAND</span><span id="resL" class="res-num">0.0 mm</span></div>
+
+        <div class="spec-box" id="led-results">
+            <div class="spec-line"><span>Module:</span><span id="outQty" class="spec-val">0</span></div>
+            <div class="spec-line"><span>Last:</span><span id="outTW" class="spec-val">0 W</span></div>
+            <div class="spec-line"><span>Netzteil:</span><span id="outPSU" class="spec-val">---</span></div>
+        </div>
+
+        <button class="action-btn list-btn" onclick="showList()"><i data-lucide="list-checks"></i> Materialliste</button>
+        <button class="action-btn hist-btn" onclick="saveToHistory()"><i data-lucide="save"></i> Projekt speichern</button>
+    </div>
+
+    <div id="view-liste" class="view">
+        <div class="back-btn" onclick="go('led')"><i data-lucide="chevron-left"></i> <span>ZURÜCK</span></div>
+        <div class="logo-area"><h1>Materialliste</h1></div>
+        <div class="order-list" id="order-content"></div>
+        <button class="action-btn wa-btn" onclick="shareWhatsApp()"><i data-lucide="message-circle"></i> WhatsApp</button>
+        <button class="action-btn list-btn" onclick="window.print()"><i data-lucide="printer"></i> PDF</button>
+    </div>
+
+    <div id="view-historie" class="view">
+        <div class="back-btn" onclick="go('main')"><i data-lucide="chevron-left"></i> <span>ZURÜCK</span></div>
+        <div class="logo-area"><h1>Letzte Projekte</h1></div>
+        <div id="hist-list"></div>
+        <button class="action-btn" style="background:#ef4444; color:white;" onclick="clearHistory()">Historie löschen</button>
+    </div>
 </div>
 
 <script>
-let clickCount = 0;
-let clickTimer;
+    const modules = {
+        gs_eco: { name: "GS-Eco 0.72W", a: 160, w: 0.72, src: 'GS' },
+        gs_pow: { name: "GS-Power 1.20W", a: 170, w: 1.2, src: 'GS' },
+        amz_std: { name: "AMZ Standard 0.72W", a: 120, w: 0.72, src: 'AMZ' },
+        amz_inj: { name: "AMZ Inject 1.50W", a: 160, w: 1.5, src: 'AMZ' }
+    };
 
-function handleBTClick() {
-    clickCount++;
-    clearTimeout(clickTimer);
-    if (clickCount === 5) {
-        showMasterGreeting();
-        clickCount = 0;
-    } else {
-        clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
-        connectBluetooth(); 
+    const psuDatabase = [
+        { name: "Netzteil 60W", p: 60, src: 'GS' },
+        { name: "Netzteil 150W", p: 150, src: 'GS' },
+        { name: "Amazon 120W", p: 120, src: 'AMZ' }
+    ];
+
+    function applyModule() { calcL(); }
+
+    function calcL() {
+        let kw = parseFloat(document.getElementById('lkw').value), kh = parseFloat(document.getElementById('lkh').value),
+            z = parseFloat(document.getElementById('lz').value), sel = document.getElementById('lSelect').value;
+        let mod = modules[sel];
+        let dist = (2 * z * Math.tan((mod.a/2) * (Math.PI/180)) * 0.6);
+        document.getElementById('resL').innerText = dist.toFixed(1) + " mm";
+        let q = Math.ceil(kw/dist) * Math.ceil(kh/dist);
+        let load = q * mod.w;
+        document.getElementById('outQty').innerText = q;
+        document.getElementById('outTW').innerText = load.toFixed(1) + " W";
+        let psu = psuDatabase.find(p => p.p >= load * 1.2 && (mod.src === p.src));
+        document.getElementById('outPSU').innerText = psu ? psu.name : "Split needed";
     }
-}
 
-function showMasterGreeting() {
-    const egg = document.getElementById('easter-egg');
-    egg.style.display = 'block';
-    setTimeout(() => { egg.style.display = 'none'; }, 3500);
-}
-
-async function connectBluetooth() {
-    if (!navigator.bluetooth) return;
-    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
-}
-
-const translations = {
-    de: { title: "Original Rollen-Meter", D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN" },
-    en: { title: "Original Roll Meter", D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER" },
-    fr: { title: "Mètre de Rouleau Original", D: "Diamètre du rouleau", d: "Diamètre du noyau", s: "Épaisseur du matériau", res: "Matériel sur le rouleau", bt: "CONNECTER L'APPAREIL" },
-    nl: { title: "Originele Rol-Meter", D: "Roldiameter", d: "Kerndiameter", s: "Materiaaldikte", res: "Materiaal op de rol", bt: "APPARAAT VERBINDEN" },
-    pl: { title: "Oryginalny Rol-Metr", D: "Średnica rolki", d: "Średnica rdzenia", s: "Grubość materiału", res: "Materiał na rolce", bt: "POŁĄCZ URZĄDZENIE" },
-    es: { title: "Metro de Rollo Original", D: "Diámetro del rollo", d: "Diámetro del núcleo", s: "Espesor del material", res: "Material en el rollo", bt: "CONECTAR APARATO" },
-    it: { title: "Metro per Rotoli Originale", D: "Diametro del rotolo", d: "Diametro dell'anima", s: "Spessore del materiale", res: "Materiale sul rotolo", bt: "COLLEGA DISPOSITIVO" },
-    hu: { title: "Eredeti Tekercsmérő", D: "Tekercs átmérő", d: "Mag átmérő", s: "Anyagvastagság", res: "Anyag a tekercsen", bt: "ESZKÖZ CSATLAKOZTATÁSA" },
-    ru: { title: "Оригинальный Рулономер", D: "Диаметр рулона", d: "Диаметр втулки", s: "Толщина материала", res: "Материал на рулоне", bt: "ПОДКЛЮЧИТЬ ПРИБОР" },
-    ja: { title: "オリジナル・ロールメーター", D: "ロール径", d: "芯径", s: "材料の厚み", res: "ロール上の材料", bt: "デバイスを接続する" }
-};
-
-function changeLang() {
-    const l = document.getElementById('langPicker').value;
-    const u = document.getElementById('unitPicker').value;
-    const unitText = "(" + u + ")";
-    const t = translations[l] || translations['de'];
-
-    document.getElementById('main_title').innerText = t.title;
-    document.getElementById('lbl_D').innerText = t.D + " " + unitText;
-    document.getElementById('lbl_d').innerText = t.d + " " + unitText;
-    document.getElementById('lbl_s').innerText = t.s + " " + unitText;
-    document.getElementById('lbl_res_text').innerText = t.res;
-    document.getElementById('lbl_bt_text').innerText = t.bt;
-}
-
-function calc() {
-    const unit = document.getElementById('unitPicker').value;
-    changeLang();
-    let D = parseFloat(document.getElementById('D').value.replace(',', '.'));
-    let d = parseFloat(document.getElementById('d').value.replace(',', '.'));
-    let s = parseFloat(document.getElementById('s').value.replace(',', '.'));
-    
-    if(D && d && s && D > d) {
-        if(unit === "inc") { D *= 25.4; d *= 25.4; s *= 25.4; }
-        const L = (Math.PI * (Math.pow(D, 2) - Math.pow(d, 2))) / (4000 * s);
-        document.getElementById('res').innerText = L.toFixed(2) + " m";
-    } else { 
-        document.getElementById('res').innerText = "0.00 m"; 
+    /* HISTORIE LOGIK */
+    function saveToHistory() {
+        let name = document.getElementById('projName').value || "Unbenanntes Projekt";
+        let data = {
+            name: name,
+            date: new Date().toLocaleDateString('de-DE'),
+            qty: document.getElementById('outQty').innerText,
+            mod: modules[document.getElementById('lSelect').value].name,
+            psu: document.getElementById('outPSU').innerText
+        };
+        let history = JSON.parse(localStorage.getItem('gs_history') || '[]');
+        history.unshift(data);
+        if(history.length > 10) history.pop();
+        localStorage.setItem('gs_history', JSON.stringify(history));
+        alert("Projekt gespeichert!");
     }
-}
 
-// NEU: Erkennt die Browser-Sprache beim Start
-function initApp() {
-    const userLang = navigator.language.substring(0, 2).toLowerCase();
-    const langPicker = document.getElementById('langPicker');
-    
-    // Prüfen, ob die Sprache im Dropdown existiert
-    let found = false;
-    for (let i = 0; i < langPicker.options.length; i++) {
-        if (langPicker.options[i].value === userLang) {
-            langPicker.selectedIndex = i;
-            found = true;
-            break;
-        }
+    function showHistory() {
+        let history = JSON.parse(localStorage.getItem('gs_history') || '[]');
+        let container = document.getElementById('hist-list');
+        container.innerHTML = history.length ? "" : "<p>Keine Einträge vorhanden.</p>";
+        history.forEach((item, index) => {
+            container.innerHTML += `
+                <div class="hist-item" onclick="loadHistoryItem(${index})">
+                    <strong>${item.name}</strong><br>
+                    <small>${item.date} | ${item.qty}x ${item.mod}</small>
+                </div>`;
+        });
+        go('historie');
+    }
+
+    function clearHistory() { if(confirm("Historie wirklich löschen?")) { localStorage.removeItem('gs_history'); showHistory(); } }
+
+    function showList() {
+        let mod = modules[document.getElementById('lSelect').value];
+        let qty = document.getElementById('outQty').innerText;
+        let psu = document.getElementById('outPSU').innerText;
+        document.getElementById('order-content').innerHTML = `
+            <div style="font-weight:bold; border-bottom:1px solid #000; margin-bottom:10px;">PROJEKT: LED</div>
+            <div class="order-item"><span>${mod.name}</span><strong>${qty} Stk.</strong></div>
+            <div class="order-item"><span>${psu}</span><strong>1 Stk.</strong></div>
+        `;
+        go('liste');
+    }
+
+    function shareWhatsApp() {
+        let mod = modules[document.getElementById('lSelect').value];
+        let text = `*PROJEKT-MATERIAL*\n📦 Modul: ${mod.name}\n🔢 Anzahl: ${document.getElementById('outQty').innerText}\n⚡ Netzteil: ${document.getElementById('outPSU').innerText}`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    /* CORE LOGIC */
+    function go(v) { 
+        document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); 
+        document.getElementById(v === 'main' ? 'main' : 'view-' + v).classList.add('active'); 
+        lucide.createIcons(); 
+    }
+    function initApp() { 
+        const sel = document.getElementById('lG');
+        ["de", "en"].forEach(k => { let o = document.createElement('option'); o.value = k; o.innerText = k.toUpperCase(); sel.appendChild(o); });
+        sel.value = "de"; lucide.createIcons(); calcL(); 
     }
     
-    calc();
-}
+    let clicks = 0, timer;
+    document.getElementById('logo-trigger').addEventListener('click', () => {
+        clicks++; clearTimeout(timer);
+        if (clicks === 5) { document.getElementById('egg-popup').style.display = 'flex'; setTimeout(() => { document.getElementById('egg-popup').style.display = 'none'; }, 3000); clicks = 0; }
+        timer = setTimeout(() => { clicks = 0; }, 1000);
+    });
 
-// Startet die Initialisierung
-initApp();
+    document.getElementById('footer-content').innerHTML = `<strong>GRÖNER-SCHULZE GMBH</strong>V2.2.2 | 30.01.2026<br><a href="https://www.groener-schulze.com/impressum" target="_blank">Impressum</a> | <a href="https://www.groener-schulze.com/datenschutzbestimmungen" target="_blank">Datenschutz</a>`;
+    initApp();
 </script>
 </body>
 </html>
