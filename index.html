@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rollen-Meter | Gröner-Schulze</title>
+    <title>Original Rollen-Meter | Gröner-Schulze</title>
     <style>
         :root {
             --brand-navy: #0E1D3A;
@@ -66,13 +66,13 @@
         .logo-container img { 
             max-width: 90%; 
             height: auto; 
-            max-height: 65px; /* Bildhöhe bleibt unverändert */
+            max-height: 65px; 
         }
 
         .app-title {
             color: white;
             text-align: center;
-            font-size: 1.25em;
+            font-size: 1.15em; /* Etwas kleiner, damit der längere Name passt */
             font-weight: 600;
             margin-top: -5px; 
             margin-bottom: 15px;
@@ -187,7 +187,7 @@
         <img src="GS-Logo.jpg" alt="Gröner-Schulze">
     </div>
     
-    <div class="app-title">Rollen-Meter</div>
+    <div class="app-title">Original Rollen-Meter</div>
     
     <div class="divider"></div>
 
@@ -224,7 +224,7 @@
 </div>
 
 <script>
-// (JavaScript-Logik bleibt gleich)
+// JavaScript bleibt identisch
 const translations = {
     de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN" },
     en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER" }
@@ -234,11 +234,11 @@ function changeLang() {
     const l = document.getElementById('langPicker').value;
     const u = document.getElementById('unitPicker').value;
     const unitText = "(" + u + ")";
-    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['en'].D) + " " + unitText;
-    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['en'].d) + " " + unitText;
-    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['en'].s) + " " + unitText;
-    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['en'].res;
-    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['en'].bt;
+    document.getElementById('lbl_D').innerText = (translations[l]?.D || translations['de'].D) + " " + unitText;
+    document.getElementById('lbl_d').innerText = (translations[l]?.d || translations['de'].d) + " " + unitText;
+    document.getElementById('lbl_s').innerText = (translations[l]?.s || translations['de'].s) + " " + unitText;
+    document.getElementById('lbl_res_text').innerText = translations[l]?.res || translations['de'].res;
+    document.getElementById('lbl_bt_text').innerText = translations[l]?.bt || translations['de'].bt;
 }
 
 function calc() {
@@ -252,6 +252,10 @@ function calc() {
         const L = (Math.PI * (Math.pow(D, 2) - Math.pow(d, 2))) / (4000 * s);
         document.getElementById('res').innerText = L.toFixed(2) + " m";
     } else { document.getElementById('res').innerText = "0.00 m"; }
+}
+async function connectBluetooth() {
+    if (!navigator.bluetooth) { alert("Bluetooth nicht unterstützt."); return; }
+    try { await navigator.bluetooth.requestDevice({ acceptAllDevices: true }); } catch (e) {}
 }
 calc();
 </script>
