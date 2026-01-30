@@ -39,7 +39,7 @@
         
         .top-controls { 
             position: absolute; 
-            top: 15px; 
+            top: 10px; /* Von 15px auf 10px verringert */
             left: 15px; 
             right: 15px; 
             display: flex; 
@@ -59,8 +59,8 @@
 
         .logo-container { 
             text-align: center; 
-            margin-bottom: 0px; /* Abstand komplett entfernt */
-            padding-top: 30px; 
+            margin-bottom: 0px; 
+            padding-top: 20px; /* Von 30px auf 20px verringert */
         }
 
         .logo-container img { 
@@ -74,7 +74,7 @@
             text-align: center;
             font-size: 1.25em;
             font-weight: 600;
-            margin-top: -5px; /* Zieht den Text weiter nach oben zum Logo */
+            margin-top: -5px; 
             margin-bottom: 15px;
             letter-spacing: 0.5px;
             display: block;
@@ -224,11 +224,10 @@
 </div>
 
 <script>
-// JavaScript bleibt gleich wie zuvor
+// JavaScript wie gehabt
 const translations = {
     de: { D: "Rollendurchmesser", d: "Kerndurchmesser", s: "Materialstärke", res: "Material auf der Rolle", bt: "MESS-GERÄT VERBINDEN", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Impressum", priv: "Datenschutz" },
     en: { D: "Roll Diameter", d: "Core Diameter", s: "Material Thickness", res: "Material on Roll", bt: "CONNECT CALIPER", foot: "V1.0 Multi-Unit & Bluetooth", imp: "Imprint", priv: "Privacy" }
-    // ... restliche Sprachen ergänzen falls nötig
 };
 
 function changeLang() {
